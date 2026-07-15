@@ -1,33 +1,34 @@
 "use client";
 
 import React, { useState } from "react";
-import { 
-  Award, 
-  MapPin, 
-  Star, 
-  Users, 
-  Sun, 
-  BatteryCharging, 
-  Cpu, 
-  Zap, 
-  Video, 
-  ShieldAlert, 
-  Wrench, 
-  Factory, 
-  User, 
-  Globe, 
-  Headphones, 
-  Phone, 
-  Mail, 
-  Clock, 
-  ArrowRight, 
+import {
+  Award,
+  MapPin,
+  Star,
+  Users,
+  Sun,
+  BatteryCharging,
+  Cpu,
+  Zap,
+  Video,
+  ShieldAlert,
+  Wrench,
+  Factory,
+  User,
+  Globe,
+  Headphones,
+  Phone,
+  Mail,
+  Clock,
+  ArrowRight,
   ChevronRight,
   MessageSquare,
   MessageCircle,
   Home as HomeIcon,
   Briefcase,
   FolderKanban,
-  Contact as ContactIcon
+  Contact as ContactIcon,
+  CheckCircle
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -77,8 +78,8 @@ export default function Home() {
     { title: "Home Solar Installation", location: "Sydney, Australia", type: "residential", capacity: "15 kW", image: "/assets/project-sydney.png" }
   ];
 
-  const filteredProjects = projectFilter === "all" 
-    ? allProjects 
+  const filteredProjects = projectFilter === "all"
+    ? allProjects
     : allProjects.filter((p) => p.type === projectFilter);
 
   const handleTabChange = (tabId: string) => {
@@ -772,17 +773,17 @@ export default function Home() {
 
       {/* Floating Chat Widgets (Mobile UI) */}
       <div className={styles.floatingWidgets}>
-        <a 
-          href="https://wa.me/2348012345678" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://wa.me/2348012345678"
+          target="_blank"
+          rel="noopener noreferrer"
           className={styles.whatsappFloat}
           aria-label="Chat on WhatsApp"
         >
           <MessageSquare size={24} fill="currentColor" />
         </a>
-        <a 
-          href="#chat" 
+        <a
+          href="#chat"
           className={styles.supportChatFloat}
           aria-label="Open Live Chat Support"
         >
@@ -792,29 +793,29 @@ export default function Home() {
 
       {/* Mobile Sticky Bottom Navbar */}
       <nav className={styles.mobileBottomNav}>
-        <button 
-          onClick={() => handleTabChange("home")} 
+        <button
+          onClick={() => handleTabChange("home")}
           className={`${styles.bottomNavBtn} ${activeTab === "home" ? styles.bottomNavBtnActive : ""}`}
         >
           <HomeIcon size={20} />
           <span>Home</span>
         </button>
-        <button 
-          onClick={() => handleTabChange("solutions")} 
+        <button
+          onClick={() => handleTabChange("solutions")}
           className={`${styles.bottomNavBtn} ${activeTab === "solutions" ? styles.bottomNavBtnActive : ""}`}
         >
           <Briefcase size={20} />
           <span>Services</span>
         </button>
-        <button 
-          onClick={() => handleTabChange("projects")} 
+        <button
+          onClick={() => handleTabChange("projects")}
           className={`${styles.bottomNavBtn} ${activeTab === "projects" ? styles.bottomNavBtnActive : ""}`}
         >
           <FolderKanban size={20} />
           <span>Projects</span>
         </button>
-        <button 
-          onClick={() => handleTabChange("contact")} 
+        <button
+          onClick={() => handleTabChange("contact")}
           className={`${styles.bottomNavBtn} ${activeTab === "contact" ? styles.bottomNavBtnActive : ""}`}
         >
           <ContactIcon size={20} />

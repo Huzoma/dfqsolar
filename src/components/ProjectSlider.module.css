@@ -195,3 +195,57 @@
   border-color: var(--primary-blue);
   transform: scale(1.05);
 }
+
+.arrowIconWrapper {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrowIcon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.arrowNormal {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.arrowLeftHovered {
+  opacity: 0;
+  transform: translate(4px, 4px); /* Shifts in from down-right */
+}
+
+.arrowRightHovered {
+  opacity: 0;
+  transform: translate(-4px, 4px); /* Shifts in from down-left */
+}
+
+/* Hover effects */
+.arrowBtn:hover .arrowNormal {
+  opacity: 0;
+}
+
+.arrowBtn:hover .arrowNormal.left {
+  transform: translate(-4px, -4px); /* flies out up-left */
+}
+
+.arrowBtn:hover .arrowNormal.right {
+  transform: translate(4px, -4px); /* flies out up-right */
+}
+
+.arrowBtn:hover .arrowLeftHovered {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.arrowBtn:hover .arrowRightHovered {
+  opacity: 1;
+  transform: translate(0, 0);
+}

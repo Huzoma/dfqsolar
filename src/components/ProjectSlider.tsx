@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { MapPin } from "lucide-react";
+import { MapPin, ArrowLeft, ArrowUpLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import styles from "./ProjectSlider.module.css";
 
 export default function ProjectSlider() {
@@ -101,10 +101,16 @@ export default function ProjectSlider() {
         
         <div className={styles.arrows}>
           <button onClick={prevSlide} className={styles.arrowBtn} aria-label="Previous Project">
-            &larr;
+            <span className={styles.arrowIconWrapper}>
+              <ArrowLeft className={`${styles.arrowIcon} ${styles.arrowNormal} ${styles.left}`} size={20} />
+              <ArrowUpLeft className={`${styles.arrowIcon} ${styles.arrowLeftHovered}`} size={20} />
+            </span>
           </button>
           <button onClick={nextSlide} className={styles.arrowBtn} aria-label="Next Project">
-            &rarr;
+            <span className={styles.arrowIconWrapper}>
+              <ArrowRight className={`${styles.arrowIcon} ${styles.arrowNormal} ${styles.right}`} size={20} />
+              <ArrowUpRight className={`${styles.arrowIcon} ${styles.arrowRightHovered}`} size={20} />
+            </span>
           </button>
         </div>
       </div>

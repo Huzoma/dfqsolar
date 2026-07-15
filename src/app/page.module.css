@@ -792,6 +792,15 @@
 .fullSolDetails h3 {
   font-size: 26px;
   margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--dark-navy);
+}
+
+.solTitleIcon {
+  color: var(--solar-orange);
+  flex-shrink: 0;
 }
 
 .fullSolDetails p {
@@ -1095,13 +1104,22 @@
 }
 
 .toastSuccess {
-  background: rgba(56, 142, 60, 0.08);
-  border: 1px solid rgba(56, 142, 60, 0.15);
+  margin-top: 16px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
   color: var(--success);
   padding: 14px 20px;
   border-radius: var(--radius-sm);
   font-size: 14px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.successIcon {
+  color: #10b981;
+  flex-shrink: 0;
 }
 
 .contactInfoBox {
