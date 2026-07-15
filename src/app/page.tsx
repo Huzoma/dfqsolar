@@ -21,6 +21,7 @@ import {
   Mail,
   Clock,
   ArrowRight,
+  ArrowUpRight,
   ChevronRight,
   MessageSquare,
   MessageCircle,
@@ -111,7 +112,11 @@ export default function Home() {
                     </p>
                     <div className={styles.heroCtaRow}>
                       <button onClick={() => handleTabChange("quote")} className={styles.btnPrimary}>
-                        Get a Free Quote <ArrowRight size={16} className={styles.btnIcon} />
+                        Get a Free Quote
+                        <span className={styles.arrowIconWrapper}>
+                          <ArrowRight className={`${styles.arrowIcon} ${styles.arrowNormal}`} size={16} />
+                          <ArrowUpRight className={`${styles.arrowIcon} ${styles.arrowRightHovered}`} size={16} />
+                        </span>
                       </button>
                       <button onClick={() => handleTabChange("solutions")} className={styles.btnSecondary}>
                         Explore Solutions <ChevronRight size={16} className={styles.btnIcon} />
@@ -263,7 +268,11 @@ export default function Home() {
                     <h2 className={styles.productsTitle}>Top Renewable Equipment</h2>
                   </div>
                   <button onClick={() => handleTabChange("products")} className={styles.viewAllBtn}>
-                    View All <ArrowRight size={16} />
+                    View All
+                    <span className={styles.arrowIconWrapper}>
+                      <ArrowRight className={`${styles.arrowIcon} ${styles.arrowNormal}`} size={16} />
+                      <ArrowUpRight className={`${styles.arrowIcon} ${styles.arrowRightHovered}`} size={16} />
+                    </span>
                   </button>
                 </div>
 

@@ -1253,3 +1253,54 @@
 .bottomNavBtnActive {
   color: var(--primary-blue);
 }
+
+/* Transitioning arrows for buttons in the main content */
+.arrowIconWrapper {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.arrowIcon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.arrowNormal {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.arrowRightHovered {
+  opacity: 0;
+  transform: translate(-3px, 3px); /* Shifts in from down-left */
+}
+
+/* Hover transitions on btnPrimary */
+.btnPrimary:hover .arrowNormal {
+  opacity: 0;
+  transform: translate(3px, -3px); /* flies out up-right */
+}
+
+.btnPrimary:hover .arrowRightHovered {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Hover transitions on viewAllBtn */
+.viewAllBtn:hover .arrowNormal {
+  opacity: 0;
+  transform: translate(3px, -3px); /* flies out up-right */
+}
+
+.viewAllBtn:hover .arrowRightHovered {
+  opacity: 1;
+  transform: translate(0, 0);
+}

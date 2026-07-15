@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, ArrowRight, ArrowUpRight } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 interface NavbarProps {
@@ -59,7 +59,10 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
             onClick={() => handleNavClick("quote")}
           >
             Get a Quote
-            <span className={styles.ctaArrow}>&rarr;</span>
+            <span className={styles.arrowIconWrapper}>
+              <ArrowRight className={`${styles.arrowIcon} ${styles.arrowNormal}`} size={16} />
+              <ArrowUpRight className={`${styles.arrowIcon} ${styles.arrowRightHovered}`} size={16} />
+            </span>
           </button>
         </div>
 
