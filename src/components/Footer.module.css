@@ -44,10 +44,10 @@
 }
 
 .logo {
-  height: 48px;
+  height: 60px;
   width: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1); /* makes the dark logo pure white for dark footer */
+  opacity: 1;
 }
 
 .description {
@@ -141,8 +141,10 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-.icon {
-  font-size: 16px;
+.contactIcon {
+  color: var(--solar-orange);
+  margin-top: 3px;
+  flex-shrink: 0;
 }
 
 .newsletterTitle {

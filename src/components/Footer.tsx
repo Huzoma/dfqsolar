@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { MapPin, Phone, Mail, Globe, Facebook, Twitter, Linkedin, Youtube, ArrowRight } from "lucide-react";
 import styles from "./Footer.module.css";
 
 interface FooterProps {
@@ -32,23 +33,23 @@ export default function Footer({ setActiveTab }: FooterProps) {
           {/* Logo & Description */}
           <div className={styles.col}>
             <div className={styles.logoContainer} onClick={() => handleLinkClick("home")}>
-              <img src="/assets/logo.png" alt="DFQ Solar World Logo" className={styles.logo} />
+              <img src="/assets/logo-white.svg" alt="DFQ Solar World Logo" className={styles.logo} />
             </div>
             <p className={styles.description}>
               DFQ Solar World is a global leader in solar energy solutions. We are committed to providing clean, reliable, and affordable energy for a sustainable future.
             </p>
             <div className={styles.socials}>
               <a href="#" className={styles.socialLink} aria-label="Facebook">
-                <span>FB</span>
+                <Facebook size={16} />
               </a>
               <a href="#" className={styles.socialLink} aria-label="Twitter">
-                <span>TW</span>
+                <Twitter size={16} />
               </a>
               <a href="#" className={styles.socialLink} aria-label="LinkedIn">
-                <span>LN</span>
+                <Linkedin size={16} />
               </a>
               <a href="#" className={styles.socialLink} aria-label="YouTube">
-                <span>YT</span>
+                <Youtube size={16} />
               </a>
             </div>
           </div>
@@ -83,19 +84,19 @@ export default function Footer({ setActiveTab }: FooterProps) {
             <h4 className={styles.colTitle}>Contact Us</h4>
             <ul className={styles.contactInfo}>
               <li>
-                <span className={styles.icon}>📍</span>
+                <MapPin size={16} className={styles.contactIcon} />
                 <span>123 Solar Way, Green City, California, USA</span>
               </li>
               <li>
-                <span className={styles.icon}>📞</span>
+                <Phone size={16} className={styles.contactIcon} />
                 <span>+1 (123) 456-7890</span>
               </li>
               <li>
-                <span className={styles.icon}>✉️</span>
+                <Mail size={16} className={styles.contactIcon} />
                 <span>info@dfqsolarworld.com</span>
               </li>
               <li>
-                <span className={styles.icon}>🌐</span>
+                <Globe size={16} className={styles.contactIcon} />
                 <span>www.dfqsolarworld.com</span>
               </li>
             </ul>
@@ -114,7 +115,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
                 required
               />
               <button type="submit" className={styles.newsletterSubmit} aria-label="Subscribe">
-                <span>&rarr;</span>
+                <ArrowRight size={16} />
               </button>
             </form>
             {subscribed && (

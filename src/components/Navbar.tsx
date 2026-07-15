@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { Phone, Menu, X } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 interface NavbarProps {
@@ -30,9 +31,9 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
   return (
     <header className={styles.header}>
       <div className={`${styles.container} container`}>
-        {/* Logo */}
+        {/* Logo (Transparent SVG) */}
         <div className={styles.logoContainer} onClick={() => handleNavClick("home")}>
-          <img src="/assets/logo.png" alt="DFQ Solar World Logo" className={styles.logo} />
+          <img src="/assets/logo.svg" alt="DFQ Solar World Logo" className={styles.logo} />
         </div>
 
         {/* Desktop Navigation */}
@@ -62,16 +63,19 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
           </button>
         </div>
 
-        {/* Hamburger Menu Toggle (Mobile) */}
-        <button
-          className={`${styles.hamburger} ${isOpen ? styles.hamburgerActive : ""}`}
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle Navigation Menu"
-        >
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
-        </button>
+        {/* Mobile Call & Menu Toggles */}
+        <div className={styles.mobileToggles}>
+          <a href="tel:+11234567890" className={styles.mobilePhoneBtn} aria-label="Call Customer Hotline">
+            <Phone size={18} fill="currentColor" />
+          </a>
+          <button
+            className={styles.hamburger}
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Navigation Menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation Drawer */}

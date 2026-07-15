@@ -1,6 +1,34 @@
 "use client";
 
 import React, { useState } from "react";
+import { 
+  Award, 
+  MapPin, 
+  Star, 
+  Users, 
+  Sun, 
+  BatteryCharging, 
+  Cpu, 
+  Zap, 
+  Video, 
+  ShieldAlert, 
+  Wrench, 
+  Factory, 
+  User, 
+  Globe, 
+  Headphones, 
+  Phone, 
+  Mail, 
+  Clock, 
+  ArrowRight, 
+  ChevronRight,
+  MessageSquare,
+  MessageCircle,
+  Home as HomeIcon,
+  Briefcase,
+  FolderKanban,
+  Contact as ContactIcon
+} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PartnerSlider from "@/components/PartnerSlider";
@@ -53,6 +81,11 @@ export default function Home() {
     ? allProjects 
     : allProjects.filter((p) => p.type === projectFilter);
 
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <div className={styles.appContainer}>
       {/* Header / Navbar */}
@@ -68,30 +101,39 @@ export default function Home() {
               <div className="container">
                 <div className={styles.heroGrid}>
                   <div className={styles.heroTextCol}>
-                    <span className={styles.heroSubtitle}>Clean Energy. Endless Possibilities.</span>
-                    <h1 className={styles.heroTitle}>Powering a Brighter Future</h1>
+                    <span className={styles.heroSubtitle}>POWERING NIGERIA WITH</span>
+                    <h1 className={styles.heroTitle}>
+                      SMART SOLAR <span className={styles.orangeText}>SOLUTIONS</span>
+                    </h1>
                     <p className={styles.heroDesc}>
-                      DFQ Solar World delivers reliable, sustainable, and affordable solar energy solutions for homes, businesses, and utility-scale installations across Nigeria and Africa.
+                      Reliable, affordable and sustainable solar energy for homes, businesses and industries.
                     </p>
                     <div className={styles.heroCtaRow}>
-                      <button onClick={() => setActiveTab("solutions")} className={styles.btnPrimary}>
-                        Explore Solutions
+                      <button onClick={() => handleTabChange("quote")} className={styles.btnPrimary}>
+                        Get a Free Quote <ArrowRight size={16} className={styles.btnIcon} />
                       </button>
-                      <button onClick={() => setActiveTab("quote")} className={styles.btnSecondary}>
-                        Get a Free Quote
+                      <button onClick={() => handleTabChange("solutions")} className={styles.btnSecondary}>
+                        Explore Solutions <ChevronRight size={16} className={styles.btnIcon} />
                       </button>
                     </div>
-                    {/* Trust row */}
-                    <div className={styles.trustRow}>
-                      <div className={styles.avatarGroup}>
-                        <span className={styles.avatar}>🧑‍💼</span>
-                        <span className={styles.avatar}>👩‍💼</span>
-                        <span className={styles.avatar}>👨‍🔧</span>
-                        <span className={styles.avatar}>👩‍🔬</span>
+
+                    {/* Trust Indicators in Hero */}
+                    <div className={styles.heroTrustGrid}>
+                      <div className={styles.trustItem}>
+                        <Award size={20} className={styles.trustIcon} />
+                        <span>Certified Installers</span>
                       </div>
-                      <div className={styles.trustText}>
-                        <div className={styles.stars}>⭐⭐⭐⭐⭐</div>
-                        <span>Trusted by 1,000+ customers worldwide</span>
+                      <div className={styles.trustItem}>
+                        <MapPin size={20} className={styles.trustIcon} />
+                        <span>Nationwide Installation</span>
+                      </div>
+                      <div className={styles.trustItem}>
+                        <Star size={20} className={styles.trustIcon} />
+                        <span>10+ Years Experience</span>
+                      </div>
+                      <div className={styles.trustItem}>
+                        <Users size={20} className={styles.trustIcon} />
+                        <span>Thousands of Happy Customers</span>
                       </div>
                     </div>
                   </div>
@@ -99,135 +141,173 @@ export default function Home() {
               </div>
             </section>
 
-            {/* Key Value Prop Bar */}
-            <section className={styles.valuePropBar}>
-              <div className="container">
-                <div className={styles.valuePropGrid}>
-                  <div className={styles.valueCard}>
-                    <span className={styles.valIcon}>☘️</span>
-                    <div>
-                      <h4 className={styles.valTitle}>Sustainable Energy</h4>
-                      <p className={styles.valDesc}>Clean energy solutions for a better tomorrow.</p>
-                    </div>
-                  </div>
-                  <div className={styles.valueCard}>
-                    <span className={styles.valIcon}>🛡️</span>
-                    <div>
-                      <h4 className={styles.valTitle}>Reliable & Efficient</h4>
-                      <p className={styles.valDesc}>High-performance systems built to last.</p>
-                    </div>
-                  </div>
-                  <div className={styles.valueCard}>
-                    <span className={styles.valIcon}>💰</span>
-                    <div>
-                      <h4 className={styles.valTitle}>Save More</h4>
-                      <p className={styles.valDesc}>Reduce electricity bills and operating costs.</p>
-                    </div>
-                  </div>
-                  <div className={styles.valueCard}>
-                    <span className={styles.valIcon}>🎧</span>
-                    <div>
-                      <h4 className={styles.valTitle}>Expert Support</h4>
-                      <p className={styles.valDesc}>End-to-end support from design to maintenance.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* Solutions Preview Section */}
-            <section className={`${styles.solutionsSection} section-padding`}>
+            {/* Complete Solar & Power Solutions (8-Grid) */}
+            <section className={`${styles.servicesSection} section-padding`}>
               <div className="container">
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionTag}>Our Solutions</span>
-                  <h2 className={styles.sectionTitle}>Smart Solar Solutions For Every Need</h2>
+                  <span className={styles.sectionTag}>OUR SERVICES</span>
+                  <h2 className={styles.sectionTitle}>Complete Solar & Power Solutions</h2>
                   <p className={styles.sectionSubtitle}>
-                    We provide customized solar energy systems designed to meet the unique needs of residential, commercial, and industrial clients.
+                    We provide end-to-end renewable energy and security solutions tailored to your needs.
                   </p>
                 </div>
 
-                <div className={styles.solutionsGrid}>
-                  <div className={styles.solutionCard} onClick={() => setActiveTab("solutions")}>
-                    <div className={styles.solImageWrapper}>
-                      <img src="/assets/project-sydney.png" alt="Residential Solar" className={styles.solImg} />
+                <div className={styles.servicesGrid}>
+                  <div className={styles.serviceCard} onClick={() => handleTabChange("solutions")}>
+                    <div className={styles.serviceIconBox}>
+                      <Sun size={24} />
                     </div>
-                    <div className={styles.solContent}>
-                      <span className={styles.solIcon}>🏡</span>
-                      <h3 className={styles.solTitle}>Residential Solutions</h3>
-                      <p className={styles.solDesc}>Power your home with efficient solar systems and enjoy energy independence.</p>
-                      <span className={styles.solLink}>Learn More &rarr;</span>
-                    </div>
+                    <h4 className={styles.serviceTitle}>Solar Installation</h4>
+                    <p className={styles.serviceDesc}>High-efficiency residential and commercial solar panel installation.</p>
                   </div>
 
-                  <div className={styles.solutionCard} onClick={() => setActiveTab("solutions")}>
-                    <div className={styles.solImageWrapper}>
-                      <img src="/assets/project-dubai.png" alt="Commercial Solar" className={styles.solImg} />
+                  <div className={styles.serviceCard} onClick={() => handleTabChange("solutions")}>
+                    <div className={styles.serviceIconBox}>
+                      <BatteryCharging size={24} />
                     </div>
-                    <div className={styles.solContent}>
-                      <span className={styles.solIcon}>🏢</span>
-                      <h3 className={styles.solTitle}>Commercial Solutions</h3>
-                      <p className={styles.solDesc}>Reduce operational costs and power your business sustainably with solar.</p>
-                      <span className={styles.solLink}>Learn More &rarr;</span>
-                    </div>
+                    <h4 className={styles.serviceTitle}>Lithium Battery Systems</h4>
+                    <p className={styles.serviceDesc}>Tier-1 backup storage setups leveraging Felicity Lithium cells.</p>
                   </div>
 
-                  <div className={styles.solutionCard} onClick={() => setActiveTab("solutions")}>
-                    <div className={styles.solImageWrapper}>
-                      <img src="/assets/project-johannesburg.png" alt="Industrial Solar" className={styles.solImg} />
+                  <div className={styles.serviceCard} onClick={() => handleTabChange("solutions")}>
+                    <div className={styles.serviceIconBox}>
+                      <Cpu size={24} />
                     </div>
-                    <div className={styles.solContent}>
-                      <span className={styles.solIcon}>🏭</span>
-                      <h3 className={styles.solTitle}>Industrial Solutions</h3>
-                      <p className={styles.solDesc}>High-capacity solar solutions for industries and large-scale operations.</p>
-                      <span className={styles.solLink}>Learn More &rarr;</span>
-                    </div>
+                    <h4 className={styles.serviceTitle}>Inverter Installation</h4>
+                    <p className={styles.serviceDesc}>Pure sine wave hybrid inverters engineered for high load transfer.</p>
                   </div>
 
-                  <div className={styles.solutionCard} onClick={() => setActiveTab("solutions")}>
-                    <div className={styles.solImageWrapper}>
-                      <img src="/assets/project-texas.png" alt="Energy Storage" className={styles.solImg} />
+                  <div className={styles.serviceCard} onClick={() => handleTabChange("solutions")}>
+                    <div className={styles.serviceIconBox}>
+                      <Zap size={24} />
                     </div>
-                    <div className={styles.solContent}>
-                      <span className={styles.solIcon}>🔋</span>
-                      <h3 className={styles.solTitle}>Energy Storage</h3>
-                      <p className={styles.solDesc}>Store energy for when you need it most with our advanced lithium storage systems.</p>
-                      <span className={styles.solLink}>Learn More &rarr;</span>
+                    <h4 className={styles.serviceTitle}>Electrical Installation</h4>
+                    <p className={styles.serviceDesc}>Industrial and estate electrical layout wiring and distributions.</p>
+                  </div>
+
+                  <div className={styles.serviceCard} onClick={() => handleTabChange("solutions")}>
+                    <div className={styles.serviceIconBox}>
+                      <Video size={24} />
                     </div>
+                    <h4 className={styles.serviceTitle}>CCTV Installation</h4>
+                    <p className={styles.serviceDesc}>Full security cameras setup with remote monitoring solar backups.</p>
+                  </div>
+
+                  <div className={styles.serviceCard} onClick={() => handleTabChange("solutions")}>
+                    <div className={styles.serviceIconBox}>
+                      <ShieldAlert size={24} />
+                    </div>
+                    <h4 className={styles.serviceTitle}>Electric Fence Installation</h4>
+                    <p className={styles.serviceDesc}>High voltage perimeter electric fence protection systems.</p>
+                  </div>
+
+                  <div className={styles.serviceCard} onClick={() => handleTabChange("solutions")}>
+                    <div className={styles.serviceIconBox}>
+                      <Wrench size={24} />
+                    </div>
+                    <h4 className={styles.serviceTitle}>Solar Maintenance</h4>
+                    <p className={styles.serviceDesc}>Regular panel washing, battery health audits, and inverter upgrades.</p>
+                  </div>
+
+                  <div className={styles.serviceCard} onClick={() => handleTabChange("solutions")}>
+                    <div className={styles.serviceIconBox}>
+                      <Factory size={24} />
+                    </div>
+                    <h4 className={styles.serviceTitle}>Industrial Solutions</h4>
+                    <p className={styles.serviceDesc}>Megawatt solar plants designed for factories and manufacturing centers.</p>
                   </div>
                 </div>
               </div>
             </section>
 
-            {/* Why Choose Us Banner */}
-            <section className={styles.statsBanner}>
+            {/* Why Choose Us Stats Box (5 Stats in Dark Navy Container) */}
+            <section className={styles.statsSection}>
               <div className="container">
-                <div className={styles.statsGrid}>
-                  <div className={styles.statsInfoCol}>
-                    <span className={styles.statsTag}>WHY CHOOSE DFQ SOLAR WORLD?</span>
-                    <h2 className={styles.statsTitle}>Innovation. Quality. Sustainability.</h2>
-                    <p className={styles.statsDesc}>
-                      At DFQ Solar World, we combine cutting-edge technology with unmatched expertise to deliver solar solutions that stand the test of time.
-                    </p>
-                    <button onClick={() => setActiveTab("about")} className={styles.btnOutlineWhite}>
-                      About Us
-                    </button>
+                <div className={styles.statsContainerBox}>
+                  <div className={styles.statItem}>
+                    <Zap size={28} className={styles.statIcon} />
+                    <span className={styles.statNumber}>1,500+</span>
+                    <span className={styles.statLabel}>Projects Completed</span>
                   </div>
-                  <div className={styles.statsValCol}>
-                    <div className={styles.statBox}>
-                      <span className={styles.statVal}>1,000+</span>
-                      <span className={styles.statLabel}>Projects Completed</span>
+                  <div className={styles.statItem}>
+                    <User size={28} className={styles.statIcon} />
+                    <span className={styles.statNumber}>10+</span>
+                    <span className={styles.statLabel}>Years of Experience</span>
+                  </div>
+                  <div className={styles.statItem}>
+                    <Users size={28} className={styles.statIcon} />
+                    <span className={styles.statNumber}>5,000+</span>
+                    <span className={styles.statLabel}>Satisfied Customers</span>
+                  </div>
+                  <div className={styles.statItem}>
+                    <Globe size={28} className={styles.statIcon} />
+                    <span className={styles.statNumber}>36</span>
+                    <span className={styles.statLabel}>States Covered</span>
+                  </div>
+                  <div className={styles.statItem}>
+                    <Headphones size={28} className={styles.statIcon} />
+                    <span className={styles.statNumber}>24/7</span>
+                    <span className={styles.statLabel}>Technical Support</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Featured Products Section */}
+            <section className={`${styles.featuredProductsSection} section-padding`}>
+              <div className="container">
+                <div className={styles.productsHeaderRow}>
+                  <div>
+                    <span className={styles.sectionTag}>FEATURED PRODUCTS</span>
+                    <h2 className={styles.productsTitle}>Top Renewable Equipment</h2>
+                  </div>
+                  <button onClick={() => handleTabChange("products")} className={styles.viewAllBtn}>
+                    View All <ArrowRight size={16} />
+                  </button>
+                </div>
+
+                <div className={styles.productsScrollTrack}>
+                  <div className={styles.prodScrollCard}>
+                    <div className={styles.prodImgBox}>
+                      <img src="/assets/product-panel.png" alt="Solar Panels" />
                     </div>
-                    <div className={styles.statBox}>
-                      <span className={styles.statVal}>20+</span>
-                      <span className={styles.statLabel}>Countries Served</span>
+                    <div className={styles.prodContent}>
+                      <h4>Solar Panels</h4>
+                      <p>High efficiency solar panels for maximum energy output.</p>
+                      <button onClick={() => handleTabChange("products")} className={styles.prodBtn}>Specs Details</button>
                     </div>
-                    <div className={styles.statBox}>
-                      <span className={styles.statVal}>5,000+</span>
-                      <span className={styles.statLabel}>Happy Customers</span>
+                  </div>
+
+                  <div className={styles.prodScrollCard}>
+                    <div className={styles.prodImgBox}>
+                      <img src="/assets/product-battery.png" alt="Lithium Batteries" />
                     </div>
-                    <div className={styles.statBox}>
-                      <span className={styles.statVal}>15+</span>
-                      <span className={styles.statLabel}>Years of Experience</span>
+                    <div className={styles.prodContent}>
+                      <h4>Lithium Batteries</h4>
+                      <p>Long lasting and reliable lithium batteries for energy storage.</p>
+                      <button onClick={() => handleTabChange("products")} className={styles.prodBtn}>Specs Details</button>
+                    </div>
+                  </div>
+
+                  <div className={styles.prodScrollCard}>
+                    <div className={styles.prodImgBox}>
+                      <img src="/assets/product-inverter.png" alt="Hybrid Inverters" />
+                    </div>
+                    <div className={styles.prodContent}>
+                      <h4>Hybrid Inverters</h4>
+                      <p>Smart inverters for seamless power conversion.</p>
+                      <button onClick={() => handleTabChange("products")} className={styles.prodBtn}>Specs Details</button>
+                    </div>
+                  </div>
+
+                  <div className={styles.prodScrollCard}>
+                    <div className={styles.prodImgBox}>
+                      <img src="/assets/product-mppt.png" alt="MPPT Controllers" />
+                    </div>
+                    <div className={styles.prodContent}>
+                      <h4>MPPT Controllers</h4>
+                      <p>Advanced MPPT controllers for maximum efficiency.</p>
+                      <button onClick={() => handleTabChange("products")} className={styles.prodBtn}>Specs Details</button>
                     </div>
                   </div>
                 </div>
@@ -238,7 +318,7 @@ export default function Home() {
             <section className={`${styles.projectsSliderSection} section-padding`}>
               <div className="container">
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionTag}>Our Projects</span>
+                  <span className={styles.sectionTag}>CASE STUDIES</span>
                   <h2 className={styles.sectionTitle}>Powering Projects Around The World</h2>
                   <p className={styles.sectionSubtitle}>
                     Explore our recent installations demonstrating our engineering excellence across various sectors.
@@ -257,14 +337,16 @@ export default function Home() {
                     DFQ Solar World delivered beyond our expectations. Their team was professional, the installation was seamless, and the system performance is excellent.
                   </blockquote>
                   <div className={styles.testimonialUser}>
-                    <span className={styles.userAvatar}>🧑‍💼</span>
+                    <span className={styles.userAvatar}>
+                      <User size={24} />
+                    </span>
                     <div>
                       <h5 className={styles.userName}>Michael Thompson</h5>
                       <p className={styles.userRole}>CEO, GreenFuture Industries</p>
                     </div>
                   </div>
                   <div className={styles.testimonialLogoBox}>
-                    <img src="/assets/logo.png" alt="DFQ Solar World" className={styles.testimonialLogo} />
+                    <img src="/assets/logo.svg" alt="DFQ Solar World Logo" className={styles.testimonialLogo} />
                   </div>
                 </div>
               </div>
@@ -290,12 +372,16 @@ export default function Home() {
 
                 <div className={styles.missionVisionGrid}>
                   <div className={styles.mvCard}>
-                    <span className={styles.mvIcon}>🎯</span>
+                    <div className={styles.mvIconBox}>
+                      <Award size={32} />
+                    </div>
                     <h3>Our Mission</h3>
                     <p>To provide affordable, reliable, and sustainable solar energy solutions across Nigeria and Africa, building a cleaner environment for future generations.</p>
                   </div>
                   <div className={styles.mvCard}>
-                    <span className={styles.mvIcon}>👁️</span>
+                    <div className={styles.mvIconBox}>
+                      <Globe size={32} />
+                    </div>
                     <h3>Our Vision</h3>
                     <p>To become Africa's leading renewable energy enterprise, recognized for world-class solar engineering and community-focused electrification programs.</p>
                   </div>
@@ -305,22 +391,30 @@ export default function Home() {
                   <h3 className={styles.valuesTitle}>Our Core Values</h3>
                   <div className={styles.valuesGrid}>
                     <div className={styles.valueBox}>
-                      <span className={styles.vIcon}>💡</span>
+                      <div className={styles.vIconBox}>
+                        <Zap size={24} />
+                      </div>
                       <h4>Innovation</h4>
                       <p>Adopting advanced smart solar tech and storage integrations to maximize performance.</p>
                     </div>
                     <div className={styles.valueBox}>
-                      <span className={styles.vIcon}>🤝</span>
+                      <div className={styles.vIconBox}>
+                        <Award size={24} />
+                      </div>
                       <h4>Integrity</h4>
                       <p>Building trust through transparent pricing, verified specifications, and honest consulting.</p>
                     </div>
                     <div className={styles.valueBox}>
-                      <span className={styles.vIcon}>🌱</span>
+                      <div className={styles.vIconBox}>
+                        <Sun size={24} />
+                      </div>
                       <h4>Sustainability</h4>
                       <p>Minimizing environmental impacts and carbon footprints through clean energy adoption.</p>
                     </div>
                     <div className={styles.valueBox}>
-                      <span className={styles.vIcon}>🏆</span>
+                      <div className={styles.vIconBox}>
+                        <Star size={24} />
+                      </div>
                       <h4>Excellence</h4>
                       <p>Upholding standard engineering protocols for robust, safe, and efficient installations.</p>
                     </div>
@@ -355,7 +449,7 @@ export default function Home() {
                         <li>Overnight silent battery power</li>
                         <li>Mobile App performance monitoring</li>
                       </ul>
-                      <button onClick={() => setActiveTab("quote")} className={styles.btnPrimary}>Size Your Home System</button>
+                      <button onClick={() => handleTabChange("quote")} className={styles.btnPrimary}>Size Your Home System</button>
                     </div>
                     <div className={styles.fullSolImage}>
                       <img src="/assets/project-sydney.png" alt="Residential System" />
@@ -375,7 +469,7 @@ export default function Home() {
                         <li>High-durability structures (25+ year lifespan)</li>
                         <li>Accelerated tax write-offs for green assets</li>
                       </ul>
-                      <button onClick={() => setActiveTab("contact")} className={styles.btnPrimary}>Request Corporate Audit</button>
+                      <button onClick={() => handleTabChange("contact")} className={styles.btnPrimary}>Request Corporate Audit</button>
                     </div>
                   </div>
 
@@ -389,7 +483,7 @@ export default function Home() {
                         <li>Harmonic filtering and power factor corrections</li>
                         <li>Comprehensive O&M maintenance contracts</li>
                       </ul>
-                      <button onClick={() => setActiveTab("contact")} className={styles.btnPrimary}>Speak with an Engineer</button>
+                      <button onClick={() => handleTabChange("contact")} className={styles.btnPrimary}>Speak with an Engineer</button>
                     </div>
                     <div className={styles.fullSolImage}>
                       <img src="/assets/project-johannesburg.png" alt="Industrial System" />
@@ -436,7 +530,7 @@ export default function Home() {
                         <span className={styles.galleryBadge}>{project.capacity}</span>
                       </div>
                       <div className={styles.galleryContent}>
-                        <span className={styles.galleryLoc}>📍 {project.location}</span>
+                        <span className={styles.galleryLoc}><MapPin size={12} className={styles.galleryLocIcon} /> {project.location}</span>
                         <h4>{project.title}</h4>
                         <p>Fully commissioned solar grid integration delivering stable power output with certified metrics.</p>
                       </div>
@@ -461,11 +555,13 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className={styles.productsGrid}>
+                <div className={styles.productsTabGrid}>
                   {/* Panels */}
-                  <div className={styles.productCard}>
+                  <div className={styles.productTabCard}>
                     <div className={styles.productBadge}>Tier-1</div>
-                    <span className={styles.productIcon}>☀️</span>
+                    <div className={styles.prodTabIconBox}>
+                      <Sun size={28} />
+                    </div>
                     <h3>DFQ Solar Panels</h3>
                     <p className={styles.productDesc}>High-efficiency N-Type Bifacial Monocrystalline modules (550W+). Delivers exceptional output even in low-light and high-temperature environments.</p>
                     <ul className={styles.productSpecsList}>
@@ -476,9 +572,11 @@ export default function Home() {
                   </div>
 
                   {/* Batteries */}
-                  <div className={`${styles.productCard} ${styles.productHighlight}`}>
+                  <div className={`${styles.productTabCard} ${styles.productHighlight}`}>
                     <div className={styles.productBadgeFeatured}>Featured Partner Product</div>
-                    <span className={styles.productIcon}>🔋</span>
+                    <div className={styles.prodTabIconBox}>
+                      <BatteryCharging size={28} />
+                    </div>
                     <h3>Felicity Solar Lithium Battery</h3>
                     <p className={styles.productDesc}>Wall-mounted Lithium Iron Phosphate (LiFePO4) storage systems (5kWh & 10kWh packs). Built for continuous cycle durability in demanding climates.</p>
                     <ul className={styles.productSpecsList}>
@@ -489,9 +587,11 @@ export default function Home() {
                   </div>
 
                   {/* Inverters */}
-                  <div className={styles.productCard}>
+                  <div className={styles.productTabCard}>
                     <div className={styles.productBadge}>Smart Tech</div>
-                    <span className={styles.productIcon}>⚡</span>
+                    <div className={styles.prodTabIconBox}>
+                      <Cpu size={28} />
+                    </div>
                     <h3>DFQ Hybrid Inverters</h3>
                     <p className={styles.productDesc}>Smart multi-mode hybrid inverters (3.5kVA to 50kVA). Coordinates power between solar arrays, lithium battery storage, utilities, and backup generators.</p>
                     <ul className={styles.productSpecsList}>
@@ -502,9 +602,11 @@ export default function Home() {
                   </div>
 
                   {/* Solar Lights */}
-                  <div className={styles.productCard}>
+                  <div className={styles.productTabCard}>
                     <div className={styles.productBadge}>Outdoor</div>
-                    <span className={styles.productIcon}>💡</span>
+                    <div className={styles.prodTabIconBox}>
+                      <Zap size={28} />
+                    </div>
                     <h3>Smart Solar Street Lights</h3>
                     <p className={styles.productDesc}>All-in-one solar street and compound lighting solutions. Features high-capacity lithium buffers, daylight sensors, and motion dimmers.</p>
                     <ul className={styles.productSpecsList}>
@@ -626,7 +728,7 @@ export default function Home() {
                     <h3 className={styles.contactInfoTitle}>Corporate Head Office</h3>
                     <div className={styles.infoList}>
                       <div className={styles.infoItem}>
-                        <span className={styles.infoIcon}>📍</span>
+                        <MapPin size={24} className={styles.contactInfoIcon} />
                         <div>
                           <h5>DFQ Solar World HQ</h5>
                           <p>123 Solar Way, Green City, California, USA</p>
@@ -634,7 +736,7 @@ export default function Home() {
                       </div>
 
                       <div className={styles.infoItem}>
-                        <span className={styles.infoIcon}>📞</span>
+                        <Phone size={24} className={styles.contactInfoIcon} />
                         <div>
                           <h5>Phone & Hotline</h5>
                           <p>+1 (123) 456-7890</p>
@@ -643,7 +745,7 @@ export default function Home() {
                       </div>
 
                       <div className={styles.infoItem}>
-                        <span className={styles.infoIcon}>✉️</span>
+                        <Mail size={24} className={styles.contactInfoIcon} />
                         <div>
                           <h5>Email Address</h5>
                           <p>info@dfqsolarworld.com</p>
@@ -652,7 +754,7 @@ export default function Home() {
                       </div>
 
                       <div className={styles.infoItem}>
-                        <span className={styles.infoIcon}>🕒</span>
+                        <Clock size={24} className={styles.contactInfoIcon} />
                         <div>
                           <h5>Office Hours</h5>
                           <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
@@ -667,6 +769,58 @@ export default function Home() {
           </div>
         )}
       </main>
+
+      {/* Floating Chat Widgets (Mobile UI) */}
+      <div className={styles.floatingWidgets}>
+        <a 
+          href="https://wa.me/2348012345678" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className={styles.whatsappFloat}
+          aria-label="Chat on WhatsApp"
+        >
+          <MessageSquare size={24} fill="currentColor" />
+        </a>
+        <a 
+          href="#chat" 
+          className={styles.supportChatFloat}
+          aria-label="Open Live Chat Support"
+        >
+          <MessageCircle size={24} fill="currentColor" />
+        </a>
+      </div>
+
+      {/* Mobile Sticky Bottom Navbar */}
+      <nav className={styles.mobileBottomNav}>
+        <button 
+          onClick={() => handleTabChange("home")} 
+          className={`${styles.bottomNavBtn} ${activeTab === "home" ? styles.bottomNavBtnActive : ""}`}
+        >
+          <HomeIcon size={20} />
+          <span>Home</span>
+        </button>
+        <button 
+          onClick={() => handleTabChange("solutions")} 
+          className={`${styles.bottomNavBtn} ${activeTab === "solutions" ? styles.bottomNavBtnActive : ""}`}
+        >
+          <Briefcase size={20} />
+          <span>Services</span>
+        </button>
+        <button 
+          onClick={() => handleTabChange("projects")} 
+          className={`${styles.bottomNavBtn} ${activeTab === "projects" ? styles.bottomNavBtnActive : ""}`}
+        >
+          <FolderKanban size={20} />
+          <span>Projects</span>
+        </button>
+        <button 
+          onClick={() => handleTabChange("contact")} 
+          className={`${styles.bottomNavBtn} ${activeTab === "contact" ? styles.bottomNavBtnActive : ""}`}
+        >
+          <ContactIcon size={20} />
+          <span>Contact</span>
+        </button>
+      </nav>
 
       {/* Footer */}
       <Footer setActiveTab={setActiveTab} />

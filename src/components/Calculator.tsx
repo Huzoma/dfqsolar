@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { Home, Building2, Factory, Sun, ClipboardList, Zap, BatteryCharging } from "lucide-react";
 import styles from "./Calculator.module.css";
 
 interface CalculatorProps {
@@ -24,37 +25,25 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
   const [co2Saved, setCo2Saved] = useState(3.8); // Tons/year
 
   useEffect(() => {
-    // Basic sizing rules based on monthly bill and property type
     let loadKW = 0;
-    let baseInverter = 3.5;
-    let multiplier = 1;
 
     switch (propertyType) {
       case "residential-small":
-        loadKW = monthlyBill / 12000; // rough sizing
-        baseInverter = 3.5;
-        multiplier = 1.0;
+        loadKW = monthlyBill / 12000;
         break;
       case "residential-medium":
         loadKW = monthlyBill / 10000;
-        baseInverter = 5;
-        multiplier = 1.1;
         break;
       case "commercial":
         loadKW = monthlyBill / 8000;
-        baseInverter = 15;
-        multiplier = 1.3;
         break;
       case "industrial":
         loadKW = monthlyBill / 7000;
-        baseInverter = 50;
-        multiplier = 1.5;
         break;
       default:
         loadKW = 5;
     }
 
-    // Bind constraints
     loadKW = Math.max(1.5, Math.min(250, loadKW));
 
     // Calculate solar sizing (kW)
@@ -72,29 +61,24 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
     else recommendedInverter = 100.0;
 
     // Calculate battery sizing (kWh)
-    // Backup requirement: loadKW * backupHours * efficiency (80%)
-    const backupLoad = Math.max(1, loadKW * 0.4); // average backup load is 40% of peak load
+    const backupLoad = Math.max(1, loadKW * 0.4);
     const storageKWh = Math.round(backupLoad * backupHours * 10) / 10;
 
     // Calculate cost in Naira
-    // High-quality systems in Nigeria cost roughly:
-    // Panel: ₦250k each, Inverter + Installation: ₦1M - ₦5M, Batteries (Felicity Solar LiFePO4): ₦1.2M per 5kWh/10kWh
     const panelsCost = panelsCount * 280000;
     const inverterCost = recommendedInverter * 250000 + 400000;
-    const batteryCost = (storageKWh / 5) * 1400000; // roughly 1.4M Naira per 5kWh lithium battery
-    const installationCost = (panelsCost + inverterCost + batteryCost) * 0.12; // 12% installation
+    const batteryCost = (storageKWh / 5) * 1400000;
+    const installationCost = (panelsCost + inverterCost + batteryCost) * 0.12;
 
     const totalCost = panelsCost + inverterCost + batteryCost + installationCost;
     const minCost = Math.round((totalCost * 0.9) / 50000) * 50000;
     const maxCost = Math.round((totalCost * 1.1) / 50000) * 50000;
 
-    // Calculate savings and CO2 (Naira per year)
-    // Assume grid + diesel costs ₦180 per kWh, and solar replaces 80% of consumption
-    const estimatedKwhPerYear = solarKW * 4.5 * 365; // 4.5 peak sun hours in Nigeria
+    // Calculate savings and CO2
+    const estimatedKwhPerYear = solarKW * 4.5 * 365;
     const savings = Math.round(estimatedKwhPerYear * 160);
-    const co2 = Math.round((estimatedKwhPerYear * 0.0006) * 10) / 10; // 0.6kg CO2 per kWh grid/diesel
+    const co2 = Math.round((estimatedKwhPerYear * 0.0006) * 10) / 10;
 
-    // Update states
     setSystemSize(solarKW);
     setNumPanels(panelsCount);
     setBatterySize(storageKWh);
@@ -126,28 +110,32 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
                 className={`${styles.radioBtn} ${propertyType === "residential-small" ? styles.radioActive : ""}`}
                 onClick={() => setPropertyType("residential-small")}
               >
-                🏡 Small Home
+                <Home size={16} className={styles.radioIcon} />
+                <span>Small Home</span>
               </button>
               <button
                 type="button"
                 className={`${styles.radioBtn} ${propertyType === "residential-medium" ? styles.radioActive : ""}`}
                 onClick={() => setPropertyType("residential-medium")}
               >
-                🏠 Large Home
+                <Home size={16} className={styles.radioIcon} />
+                <span>Large Home</span>
               </button>
               <button
                 type="button"
                 className={`${styles.radioBtn} ${propertyType === "commercial" ? styles.radioActive : ""}`}
                 onClick={() => setPropertyType("commercial")}
               >
-                🏢 Commercial Office
+                <Building2 size={16} className={styles.radioIcon} />
+                <span>Commercial Office</span>
               </button>
               <button
                 type="button"
                 className={`${styles.radioBtn} ${propertyType === "industrial" ? styles.radioActive : ""}`}
                 onClick={() => setPropertyType("industrial")}
               >
-                🏭 Factory / Industrial
+                <Factory size={16} className={styles.radioIcon} />
+                <span>Factory / Industrial</span>
               </button>
             </div>
           </div>
@@ -203,7 +191,9 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
 
           <div className={styles.resultsGrid}>
             <div className={styles.resultCard}>
-              <span className={styles.resIcon}>☀️</span>
+              <div className={styles.resIconBox}>
+                <Sun size={20} className={styles.resIcon} />
+              </div>
               <div className={styles.resData}>
                 <span className={styles.resVal}>{systemSize} kW</span>
                 <span className={styles.resLabel}>Solar Array Size</span>
@@ -211,7 +201,9 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
             </div>
 
             <div className={styles.resultCard}>
-              <span className={styles.resIcon}>📋</span>
+              <div className={styles.resIconBox}>
+                <ClipboardList size={20} className={styles.resIcon} />
+              </div>
               <div className={styles.resData}>
                 <span className={styles.resVal}>{numPanels} Panels</span>
                 <span className={styles.resLabel}>550W Tier-1 Panels</span>
@@ -219,7 +211,9 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
             </div>
 
             <div className={styles.resultCard}>
-              <span className={styles.resIcon}>⚡</span>
+              <div className={styles.resIconBox}>
+                <Zap size={20} className={styles.resIcon} />
+              </div>
               <div className={styles.resData}>
                 <span className={styles.resVal}>{inverterSize} kVA</span>
                 <span className={styles.resLabel}>Smart Hybrid Inverter</span>
@@ -227,7 +221,9 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
             </div>
 
             <div className={styles.resultCard}>
-              <span className={styles.resIcon}>🔋</span>
+              <div className={styles.resIconBox}>
+                <BatteryCharging size={20} className={styles.resIcon} />
+              </div>
               <div className={styles.resData}>
                 <span className={styles.resVal}>{batterySize} kWh</span>
                 <span className={styles.resLabel}>Felicity Lithium Storage</span>

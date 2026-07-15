@@ -1,16 +1,25 @@
 "use client";
 
 import React from "react";
+import { 
+  LongiLogo, 
+  JinkoSolarLogo, 
+  HuaweiLogo, 
+  SolisLogo, 
+  SungrowLogo, 
+  TrinaSolarLogo, 
+  FelicitySolarLogo 
+} from "./PartnerLogos";
 import styles from "./PartnerSlider.module.css";
 
 export default function PartnerSlider() {
   const partners = [
-    { name: "LONGi", logoText: "LONGi", color: "#E31B23" },
-    { name: "JinkoSolar", logoText: "JinkoSolar", color: "#78B13F" },
-    { name: "HUAWEI", logoText: "HUAWEI", color: "#ED1C24" },
-    { name: "Solis", logoText: "solis", color: "#F39200" },
-    { name: "Sungrow", logoText: "SUNGROW", color: "#E50012" },
-    { name: "Trina Solar", logoText: "Trinasolar", color: "#0055A5" },
+    { name: "LONGi", logo: <LongiLogo /> },
+    { name: "JinkoSolar", logo: <JinkoSolarLogo /> },
+    { name: "HUAWEI", logo: <HuaweiLogo /> },
+    { name: "Solis", logo: <SolisLogo /> },
+    { name: "Sungrow", logo: <SungrowLogo /> },
+    { name: "Trina Solar", logo: <TrinaSolarLogo /> },
   ];
 
   return (
@@ -30,10 +39,7 @@ export default function PartnerSlider() {
           <div className={styles.majorPartnerGrid}>
             <div className={styles.majorPartnerLogoCol}>
               <div className={styles.felicityLogoBox}>
-                <span className={styles.felicityLogoCircle}>F</span>
-                <span className={styles.felicityText}>
-                  felicity<span className={styles.orangeText}>solar</span>
-                </span>
+                <FelicitySolarLogo className={styles.felicityLogo} />
               </div>
             </div>
             <div className={styles.majorPartnerInfoCol}>
@@ -66,10 +72,10 @@ export default function PartnerSlider() {
             {/* Double the list for infinite marquee animation */}
             {[...partners, ...partners].map((partner, index) => (
               <div key={index} className={styles.logoItem}>
-                <div className={styles.logoBox} style={{ borderTopColor: partner.color }}>
-                  <span className={styles.logoName} style={{ color: partner.color }}>
-                    {partner.logoText}
-                  </span>
+                <div className={styles.logoBox}>
+                  <div className={styles.partnerLogoWrapper}>
+                    {partner.logo}
+                  </div>
                 </div>
               </div>
             ))}

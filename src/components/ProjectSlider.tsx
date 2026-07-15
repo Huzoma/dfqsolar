@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { MapPin } from "lucide-react";
 import styles from "./ProjectSlider.module.css";
 
 export default function ProjectSlider() {
@@ -64,7 +65,7 @@ export default function ProjectSlider() {
 
                 {/* Details */}
                 <div className={styles.detailsCol}>
-                  <span className={styles.location}>📍 {project.location}</span>
+                  <span className={styles.location}><MapPin size={14} className={styles.locIcon} />{project.location}</span>
                   <h3 className={styles.projectTitle}>{project.title}</h3>
                   <p className={styles.projectDesc}>{project.description}</p>
                   

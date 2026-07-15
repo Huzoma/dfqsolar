@@ -91,6 +91,13 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.locIcon {
+  flex-shrink: 0;
 }
 
 .projectTitle {

@@ -107,35 +107,16 @@
 }
 
 .felicityLogoBox {
+  width: 100%;
   display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.felicityLogoCircle {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: var(--solar-orange);
-  color: var(--white);
-  border-radius: 50%;
-  font-family: var(--font-headings);
-  font-size: 24px;
-  font-weight: 800;
+  align-items: center;
 }
 
-.felicityText {
-  font-family: var(--font-headings);
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--dark-navy);
-  letter-spacing: -0.5px;
-}
-
-.orangeText {
-  color: var(--solar-orange);
+.felicityLogo {
+  width: 220px;
+  height: 48px;
+  max-width: 100%;
 }
 
 .majorPartnerTitle {
@@ -238,9 +219,16 @@
   box-shadow: var(--shadow-medium);
 }
 
-.logoName {
-  font-family: var(--font-headings);
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+.partnerLogoWrapper {
+  width: 140px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+}
+
+.logoBox:hover .partnerLogoWrapper {
+  opacity: 1;
 }
