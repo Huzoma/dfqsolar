@@ -31,9 +31,9 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
   return (
     <header className={styles.header}>
       <div className={`${styles.container} container`}>
-        {/* Logo (Transparent SVG) */}
+        {/* Logo (Transparent PNG) */}
         <div className={styles.logoContainer} onClick={() => handleNavClick("home")}>
-          <img src="/assets/logo.svg" alt="DFQ Solar World Logo" className={styles.logo} />
+          <img src="/assets/logo.png" alt="DFQ Solar World Logo" className={styles.logo} />
         </div>
 
         {/* Desktop Navigation */}

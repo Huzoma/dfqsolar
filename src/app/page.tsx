@@ -346,7 +346,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className={styles.testimonialLogoBox}>
-                    <img src="/assets/logo.svg" alt="DFQ Solar World Logo" className={styles.testimonialLogo} />
+                    <img src="/assets/logo.png" alt="DFQ Solar World Logo" className={styles.testimonialLogo} />
                   </div>
                 </div>
               </div>

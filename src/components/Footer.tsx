@@ -33,7 +33,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
           {/* Logo & Description */}
           <div className={styles.col}>
             <div className={styles.logoContainer} onClick={() => handleLinkClick("home")}>
-              <img src="/assets/logo-white.svg" alt="DFQ Solar World Logo" className={styles.logo} />
+              <img src="/assets/logo-white.png" alt="DFQ Solar World Logo" className={styles.logo} />
             </div>
             <p className={styles.description}>
               DFQ Solar World is a global leader in solar energy solutions. We are committed to providing clean, reliable, and affordable energy for a sustainable future.
