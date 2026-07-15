@@ -1,0 +1,246 @@
+.section {
+  padding: 80px 0;
+  background: var(--white);
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-headings);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--solar-orange);
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 36px;
+  color: var(--dark-navy);
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Major Partner Card */
+.majorPartnerCard {
+  background: linear-gradient(135deg, rgba(11, 61, 145, 0.03) 0%, rgba(7, 28, 61, 0.06) 100%);
+  border: 1px solid rgba(11, 61, 145, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.majorPartnerCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--solar-orange);
+}
+
+.badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--solar-orange);
+  color: var(--white);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-family: var(--font-headings);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(247, 148, 29, 0.25);
+}
+
+@media (max-width: 576px) {
+  .badge {
+    position: relative;
+    top: auto;
+    right: auto;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+}
+
+.majorPartnerGrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .majorPartnerGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.majorPartnerLogoCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--white);
+  padding: 30px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(7, 28, 61, 0.03);
+}
+
+.felicityLogoBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.felicityLogoCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--solar-orange);
+  color: var(--white);
+  border-radius: 50%;
+  font-family: var(--font-headings);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.felicityText {
+  font-family: var(--font-headings);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--dark-navy);
+  letter-spacing: -0.5px;
+}
+
+.orangeText {
+  color: var(--solar-orange);
+}
+
+.majorPartnerTitle {
+  font-size: 22px;
+  color: var(--dark-navy);
+  margin-bottom: 12px;
+}
+
+.majorPartnerDesc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  border-top: 1px solid rgba(7, 28, 61, 0.08);
+  padding-top: 20px;
+}
+
+@media (max-width: 480px) {
+  .specsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.specItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.specVal {
+  font-family: var(--font-headings);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.specLabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Other Global Partners Logo Carousel */
+.sliderContainer {
+  margin-top: 40px;
+}
+
+.otherTitle {
+  font-family: var(--font-headings);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Infinite Marquee */
+.track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: scrollMarquee 25s linear infinite;
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+.logoItem {
+  width: 180px;
+}
+
+.logoBox {
+  background: var(--light-bg);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border-top: 3px solid var(--gray-medium);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-fast);
+}
+
+.logoBox:hover {
+  transform: translateY(-2px);
+  background: var(--white);
+  box-shadow: var(--shadow-medium);
+}
+
+.logoName {
+  font-family: var(--font-headings);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
