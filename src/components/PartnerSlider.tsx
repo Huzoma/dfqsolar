@@ -23,8 +23,45 @@ export default function PartnerSlider() {
           </p>
         </div>
 
+        {/* Major Partner Highlight */}
+        <div className={styles.majorPartnerCard}>
+          <div className={styles.badge}>Major Strategic Partner</div>
+          <div className={styles.majorPartnerGrid}>
+            <div className={styles.majorPartnerLogoCol}>
+              <div className={styles.felicityLogoBox}>
+                <img 
+                  src="/assets/partner-felicity.png" 
+                  alt="Felicity Solar Logo" 
+                  className={styles.felicityLogo} 
+                />
+              </div>
+            </div>
+            <div className={styles.majorPartnerInfoCol}>
+              <h3 className={styles.majorPartnerTitle}>Felicity Solar Partnership</h3>
+              <p className={styles.majorPartnerDesc}>
+                DFQ Solar World works in deep integration with <strong>Felicity Solar</strong> as our primary technology manufacturer. This partnership brings advanced lithium iron phosphate (LiFePO4) energy storage, intelligent hybrid inverters, and high-capacity solar arrays directly to the African market with certified local warranties and engineering support.
+              </p>
+              <div className={styles.specsGrid}>
+                <div className={styles.specItem}>
+                  <span className={styles.specVal}>10+ Years</span>
+                  <span className={styles.specLabel}>Warranty coverage</span>
+                </div>
+                <div className={styles.specItem}>
+                  <span className={styles.specVal}>LiFePO4</span>
+                  <span className={styles.specLabel}>Advanced battery tech</span>
+                </div>
+                <div className={styles.specItem}>
+                  <span className={styles.specVal}>Grade A+</span>
+                  <span className={styles.specLabel}>Cell certification</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Global Partners Slider / Grid */}
         <div className={styles.sliderContainer}>
+          <p className={styles.otherTitle}>Authorized Tier-1 Partners</p>
           <div className={styles.track}>
             {/* Double the list for infinite marquee animation */}
             {[...partners, ...partners].map((partner, index) => (
