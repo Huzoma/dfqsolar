@@ -23,9 +23,8 @@ import {
   ArrowRight,
   ArrowUpRight,
   ChevronRight,
-  MessageSquare,
-  MessageCircle,
   Home as HomeIcon,
+  Building2,
   Briefcase,
   FolderKanban,
   Contact as ContactIcon,
@@ -451,7 +450,7 @@ export default function Home() {
                 <div className={styles.fullSolutionsGrid}>
                   <div className={styles.fullSolRow}>
                     <div className={styles.fullSolDetails}>
-                      <h3>🏡 Residential Systems</h3>
+                      <h3><HomeIcon size={26} className={styles.solTitleIcon} /> Residential Systems</h3>
                       <p>Enjoy uninterrupted power and break free from grid instability. Our residential systems are designed to fit your roof space and budget, offering a blend of panels, smart inverters, and battery backups.</p>
                       <ul>
                         <li>Smart load management & switching</li>
@@ -471,7 +470,7 @@ export default function Home() {
                       <img src="/assets/project-dubai.png" alt="Commercial System" />
                     </div>
                     <div className={styles.fullSolDetails}>
-                      <h3>🏢 Commercial Systems</h3>
+                      <h3><Building2 size={26} className={styles.solTitleIcon} /> Commercial Systems</h3>
                       <p>Protect your business margins against peak utility tariffs and diesel generator fuel costs. Our commercial rooftop and carport solar solutions provide stable, clean power during your peak operating hours.</p>
                       <ul>
                         <li>Peak load shaving & demand charge reductions</li>
@@ -485,7 +484,7 @@ export default function Home() {
 
                   <div className={styles.fullSolRow}>
                     <div className={styles.fullSolDetails}>
-                      <h3>🏭 Industrial Systems</h3>
+                      <h3><Factory size={26} className={styles.solTitleIcon} /> Industrial Systems</h3>
                       <p>Power continuous production lines and manufacturing machinery with megawatt-scale solar arrays. We design robust microgrids with battery buffers to eliminate power quality sags and plant stoppages.</p>
                       <ul>
                         <li>Mega-watt scale ground and roof installations</li>
@@ -727,7 +726,7 @@ export default function Home() {
 
                       {submitted && (
                         <div className={styles.toastSuccess}>
-                          ✅ Request received successfully! Our engineer will call you shortly.
+                          <CheckCircle size={18} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} /> Request received successfully! Our engineer will call you shortly.
                         </div>
                       )}
                     </form>
@@ -779,26 +778,6 @@ export default function Home() {
           </div>
         )}
       </main>
-
-      {/* Floating Chat Widgets (Mobile UI) */}
-      <div className={styles.floatingWidgets}>
-        <a
-          href="https://wa.me/2348012345678"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.whatsappFloat}
-          aria-label="Chat on WhatsApp"
-        >
-          <MessageSquare size={24} fill="currentColor" />
-        </a>
-        <a
-          href="#chat"
-          className={styles.supportChatFloat}
-          aria-label="Open Live Chat Support"
-        >
-          <MessageCircle size={24} fill="currentColor" />
-        </a>
-      </div>
 
       {/* Mobile Sticky Bottom Navbar */}
       <nav className={styles.mobileBottomNav}>
