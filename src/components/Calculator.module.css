@@ -309,3 +309,87 @@
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(247, 148, 29, 0.4);
 }
+
+/* Solar Maintenance Option Card */
+.maintOptionCard {
+  background: var(--gray-light);
+  border: 1.5px solid var(--gray-medium);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: var(--transition-fast);
+}
+
+.maintOptionCard:hover {
+  border-color: var(--primary-blue);
+  background: #f7fafe;
+}
+
+.maintActive {
+  background: rgba(11, 61, 145, 0.05);
+  border-color: var(--primary-blue);
+}
+
+.maintCheckCol {
+  margin-top: 2px;
+  color: var(--text-secondary);
+}
+
+.maintActive .maintCheckedIcon {
+  color: var(--solar-orange);
+}
+
+.maintInfoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.maintHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.maintTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark-navy);
+}
+
+.maintPriceBadge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--solar-orange);
+  background: rgba(247, 148, 29, 0.12);
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.maintDescText {
+  font-size: 11px;
+  color: var(--text-light);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.maintIncludedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--solar-orange);
+  background: rgba(247, 148, 29, 0.15);
+  border: 1px dashed rgba(247, 148, 29, 0.4);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+}
+

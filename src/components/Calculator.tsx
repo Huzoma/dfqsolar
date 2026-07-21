@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Home, Building2, Factory, Sun, ClipboardList, Zap, BatteryCharging } from "lucide-react";
+import { Home, Building2, Factory, Sun, ClipboardList, Zap, BatteryCharging, Wrench, CheckSquare, Square } from "lucide-react";
 import styles from "./Calculator.module.css";
 
 interface CalculatorProps {
@@ -13,6 +13,23 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
   const [propertyType, setPropertyType] = useState("residential-medium");
   const [monthlyBill, setMonthlyBill] = useState(50000); // Naira
   const [backupHours, setBackupHours] = useState(8);
+  const [includeMaintenance, setIncludeMaintenance] = useState(false);
+
+  // Helper for Maintenance pricing based on property type
+  const getMaintenancePrice = (type: string) => {
+    switch (type) {
+      case "residential-small":
+        return 150000;
+      case "residential-medium":
+        return 250000;
+      case "commercial":
+        return 600000;
+      case "industrial":
+        return 1500000;
+      default:
+        return 250000;
+    }
+  };
 
   // Calculation results
   const [systemSize, setSystemSize] = useState(5); // kW
@@ -70,7 +87,8 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
     const batteryCost = (storageKWh / 5) * 1400000;
     const installationCost = (panelsCost + inverterCost + batteryCost) * 0.12;
 
-    const totalCost = panelsCost + inverterCost + batteryCost + installationCost;
+    const maintenanceFee = includeMaintenance ? getMaintenancePrice(propertyType) : 0;
+    const totalCost = panelsCost + inverterCost + batteryCost + installationCost + maintenanceFee;
     const minCost = Math.round((totalCost * 0.9) / 50000) * 50000;
     const maxCost = Math.round((totalCost * 1.1) / 50000) * 50000;
 
@@ -87,10 +105,13 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
     setEstCostMax(maxCost);
     setAnnualSavings(savings);
     setCo2Saved(co2);
-  }, [propertyType, monthlyBill, backupHours]);
+  }, [propertyType, monthlyBill, backupHours, includeMaintenance]);
 
   const handleRequestQuote = () => {
-    const summary = `${systemSize}kW System (${numPanels}x 550W Panels), ${inverterSize}kVA Inverter, ${batterySize}kWh Felicity Solar Storage for ${propertyType.toUpperCase()} property. Est. Cost: ₦${estCostMin.toLocaleString()} - ₦${estCostMax.toLocaleString()}`;
+    const maintInfo = includeMaintenance 
+      ? `, INCLUDES Annual Solar Maintenance Plan (+₦${getMaintenancePrice(propertyType).toLocaleString()}/yr)`
+      : "";
+    const summary = `${systemSize}kW System (${numPanels}x 550W Panels), ${inverterSize}kVA Inverter, ${batterySize}kWh Felicity Solar Storage for ${propertyType.toUpperCase()} property${maintInfo}. Est. Total Cost: ₦${estCostMin.toLocaleString()} - ₦${estCostMax.toLocaleString()}`;
     onQuoteRequest(summary);
   };
 
@@ -183,6 +204,34 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
               <span>24 hrs (Full Off-Grid)</span>
             </div>
           </div>
+
+          {/* Solar Maintenance Toggle */}
+          <div className={styles.inputGroup}>
+            <label className={styles.label}>Solar Maintenance & Servicing Plan</label>
+            <div
+              className={`${styles.maintOptionCard} ${includeMaintenance ? styles.maintActive : ""}`}
+              onClick={() => setIncludeMaintenance(!includeMaintenance)}
+            >
+              <div className={styles.maintCheckCol}>
+                {includeMaintenance ? (
+                  <CheckSquare size={22} className={styles.maintCheckedIcon} />
+                ) : (
+                  <Square size={22} className={styles.maintUncheckedIcon} />
+                )}
+              </div>
+              <div className={styles.maintInfoCol}>
+                <div className={styles.maintHeaderRow}>
+                  <span className={styles.maintTitle}>Include Annual Solar Maintenance</span>
+                  <span className={styles.maintPriceBadge}>
+                    +₦ {getMaintenancePrice(propertyType).toLocaleString()} / yr
+                  </span>
+                </div>
+                <p className={styles.maintDescText}>
+                  Covers 4x annual panel washing, inverter health diagnostics, thermal audits & priority breakdown support.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Outputs */}
@@ -239,8 +288,15 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
                 ₦ {estCostMin.toLocaleString()} - ₦ {estCostMax.toLocaleString()}
               </span>
             </div>
+
+            {includeMaintenance && (
+              <div className={styles.maintIncludedBadge}>
+                <Wrench size={14} /> Includes Annual Maintenance Plan (+₦{getMaintenancePrice(propertyType).toLocaleString()}/yr)
+              </div>
+            )}
+
             <p className={styles.pricingNote}>
-              *Prices include Tier-1 Felicity batteries, cabling, earthing, installation, and 12-month free maintenance.
+              *Prices include Tier-1 Felicity batteries, cabling, earthing, installation, and initial system warranty.
             </p>
 
             <div className={styles.savingsBox}>

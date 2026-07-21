@@ -84,12 +84,8 @@ export default function Footer({ setActiveTab }: FooterProps) {
             <h4 className={styles.colTitle}>Contact Us</h4>
             <ul className={styles.contactInfo}>
               <li>
-                <MapPin size={16} className={styles.contactIcon} />
-                <span>123 Solar Way, Green City, California, USA</span>
-              </li>
-              <li>
                 <Phone size={16} className={styles.contactIcon} />
-                <span>+1 (123) 456-7890</span>
+                <a href="https://wa.me/+2349122896507" style={{ color: "inherit", textDecoration: "none" }}>+234 912 289 6507</a>
               </li>
               <li>
                 <Mail size={16} className={styles.contactIcon} />

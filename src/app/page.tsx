@@ -498,6 +498,40 @@ export default function Home() {
                       <img src="/assets/project-johannesburg.png" alt="Industrial System" />
                     </div>
                   </div>
+
+                  <div className={styles.fullSolRow}>
+                    <div className={styles.fullSolImage}>
+                      <img src="/assets/product-battery.png" alt="Energy Storage Solutions" />
+                    </div>
+                    <div className={styles.fullSolDetails}>
+                      <h3><BatteryCharging size={26} className={styles.solTitleIcon} /> Energy Storage Solutions</h3>
+                      <p>Experience true energy independence with grade-A lithium-iron-phosphate (LiFePO4) storage systems. Designed to buffer grid outages and deliver continuous 24/7 power for residential, commercial, and industrial microgrids.</p>
+                      <ul>
+                        <li>Scalable 5kWh to 100kWh+ Felicity lithium storage banks</li>
+                        <li>6,000+ deep discharge cycles & 10-year battery warranty</li>
+                        <li>Zero-millisecond automatic transfer switching (UPS quality)</li>
+                        <li>Smart BMS battery protection and mobile app monitoring</li>
+                      </ul>
+                      <button onClick={() => handleTabChange("quote")} className={styles.btnPrimary}>Calculate Storage Needs</button>
+                    </div>
+                  </div>
+
+                  <div className={styles.fullSolRow}>
+                    <div className={styles.fullSolDetails}>
+                      <h3><Wrench size={26} className={styles.solTitleIcon} /> Solar Maintenance & Servicing</h3>
+                      <p>Protect your clean energy investment and maximize annual system yields with our engineering maintenance contracts. We offer preventive panel washing, thermal diagnostics, and emergency repair services nationwide.</p>
+                      <ul>
+                        <li>Scheduled high-pressure deionized panel washing</li>
+                        <li>Inverter thermal auditing, firmware updates & calibration</li>
+                        <li>Battery cell health balancing & safety checks</li>
+                        <li>24/7 priority emergency technical repair coverage</li>
+                      </ul>
+                      <button onClick={() => handleTabChange("quote")} className={styles.btnPrimary}>Add Maintenance To Quote</button>
+                    </div>
+                    <div className={styles.fullSolImage}>
+                      <img src="/assets/project-texas.png" alt="Solar Maintenance" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
@@ -701,7 +735,7 @@ export default function Home() {
                         <label className={styles.formLabel}>Phone Number</label>
                         <input
                           type="tel"
-                          placeholder="+234 800 000 0000"
+                          placeholder="+234 912 289 6507"
                           className={styles.formInput}
                           value={contactForm.phone}
                           onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
@@ -734,22 +768,17 @@ export default function Home() {
 
                   {/* Office Info */}
                   <div className={styles.contactInfoBox}>
-                    <h3 className={styles.contactInfoTitle}>Corporate Head Office</h3>
+                    <h3 className={styles.contactInfoTitle}>Customer Support & Contact</h3>
                     <div className={styles.infoList}>
-                      <div className={styles.infoItem}>
-                        <MapPin size={24} className={styles.contactInfoIcon} />
-                        <div>
-                          <h5>DFQ Solar World HQ</h5>
-                          <p>123 Solar Way, Green City, California, USA</p>
-                        </div>
-                      </div>
-
                       <div className={styles.infoItem}>
                         <Phone size={24} className={styles.contactInfoIcon} />
                         <div>
-                          <h5>Phone & Hotline</h5>
-                          <p>+1 (123) 456-7890</p>
-                          <p>+234 801 234 5678 (Lagos Office)</p>
+                          <h5>Phone & WhatsApp Hotline</h5>
+                          <p>
+                            <a href="https://wa.me/+2349122896507" style={{ color: "inherit", textDecoration: "none" }}>
+                              +234 912 289 6507
+                            </a>
+                          </p>
                         </div>
                       </div>
 
@@ -765,7 +794,7 @@ export default function Home() {
                       <div className={styles.infoItem}>
                         <Clock size={24} className={styles.contactInfoIcon} />
                         <div>
-                          <h5>Office Hours</h5>
+                          <h5>Operating Hours</h5>
                           <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
                           <p>Saturday: 9:00 AM - 1:00 PM (Emergency maintenance only)</p>
                         </div>
