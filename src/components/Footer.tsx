@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, Globe, Facebook, Twitter, Linkedin, Youtube, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, Globe, Facebook, Instagram, Youtube, ArrowRight } from "lucide-react";
 import styles from "./Footer.module.css";
 
 interface FooterProps {
@@ -42,11 +42,8 @@ export default function Footer({ setActiveTab }: FooterProps) {
               <a href="#" className={styles.socialLink} aria-label="Facebook">
                 <Facebook size={16} />
               </a>
-              <a href="#" className={styles.socialLink} aria-label="Twitter">
-                <Twitter size={16} />
-              </a>
-              <a href="#" className={styles.socialLink} aria-label="LinkedIn">
-                <Linkedin size={16} />
+              <a href="#" className={styles.socialLink} aria-label="Instagram">
+                <Instagram size={16} />
               </a>
               <a href="#" className={styles.socialLink} aria-label="YouTube">
                 <Youtube size={16} />
