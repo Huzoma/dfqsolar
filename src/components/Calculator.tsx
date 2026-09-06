@@ -120,7 +120,7 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
       <div className={styles.grid}>
         {/* Inputs */}
         <div className={styles.inputsCol}>
-          <h3 className={styles.colTitle}>1. System Requirements</h3>
+          <h3 className={styles.colTitle}>Your requirements</h3>
 
           {/* Property Type */}
           <div className={styles.inputGroup}>
@@ -236,7 +236,7 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
 
         {/* Outputs */}
         <div className={styles.outputsCol}>
-          <h3 className={`${styles.colTitle} ${styles.whiteText}`}>2. Recommended Sizing</h3>
+          <h3 className={`${styles.colTitle} ${styles.whiteText}`}>Recommended sizing</h3>
 
           <div className={styles.resultsGrid}>
             <div className={styles.resultCard}>

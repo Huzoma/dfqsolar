@@ -1,34 +1,41 @@
 :root {
-  /* Color Palette */
+  /* Color Palette — "Sun & Voltage": radiant gold light on deep panel-blue */
+  --midnight: #04101F;
   --primary-blue: #0B3D91;
   --secondary-blue: #1E5DB5;
-  --solar-orange: #F7941D;
-  --sun-yellow: #FDB813;
+  /* Gold pulled from the logo's sun, warmer & richer than generic solar-orange.
+     --solar-orange kept as an alias so existing references stay valid. */
+  --gold: #F2A81C;
+  --gold-glow: #FFC64D;
+  --gold-deep: #D68A0A;
+  --solar-orange: var(--gold);
+  --sun-yellow: #FFC64D;
   --dark-navy: #071C3D;
-  --light-bg: #F7F9FC;
+  --light-bg: #F6F8FC;
   --white: #FFFFFF;
-  --gray-light: #F0F4F8;
+  --gray-light: #EEF2F8;
   --gray-medium: #D9E2EC;
   --gray-dark: #627D98;
-  --text-primary: #102A43;
-  --text-secondary: #486581;
-  --text-light: #BAC7D5;
+  --text-primary: #0E2438;
+  --text-secondary: #4A617A;
+  --text-light: #93A6BC;
   --error: #D32F2F;
-  --success: #388E3C;
+  --success: #2E9E5B;
 
   /* Font Families */
-  --font-headings: var(--font-montserrat), 'Montserrat', sans-serif;
-  --font-body: var(--font-inter), 'Inter', sans-serif;
+  --font-headings: var(--font-display), 'Space Grotesk', system-ui, sans-serif;
+  --font-body: var(--font-body-face), 'IBM Plex Sans', system-ui, sans-serif;
 
   /* Borders & Shadows */
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
-  --shadow-medium: 0 8px 30px rgba(7, 28, 61, 0.08);
-  --shadow-premium: 0 20px 40px rgba(7, 28, 61, 0.12);
+  --shadow-soft: 0 4px 20px rgba(7, 28, 61, 0.06);
+  --shadow-medium: 0 10px 34px rgba(7, 28, 61, 0.10);
+  --shadow-premium: 0 24px 48px rgba(4, 16, 31, 0.16);
   --shadow-button: 0 4px 14px rgba(11, 61, 145, 0.25);
-  
+  --shadow-gold: 0 8px 24px rgba(242, 168, 28, 0.28);
+
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
@@ -54,14 +61,22 @@ body {
   min-height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-headings);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--dark-navy);
-  line-height: 1.25;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* Tabular figures for the big metrics that carry this brand's identity */
+.tnum {
+  font-family: var(--font-headings);
+  font-feature-settings: "tnum" 1;
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -177,4 +192,16 @@ img {
 
 .animate-pulse-soft {
   animation: pulse-soft 3s infinite ease-in-out;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
