@@ -760,7 +760,7 @@ export default function Home() {
                         <label className={styles.formLabel}>Phone Number</label>
                         <input
                           type="tel"
-                          placeholder="+234 912 289 6507"
+                          placeholder="+234 814 067 9281"
                           className={styles.formInput}
                           value={contactForm.phone}
                           onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}

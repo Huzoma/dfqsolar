@@ -82,7 +82,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
             <ul className={styles.contactInfo}>
               <li>
                 <Phone size={16} className={styles.contactIcon} />
-                <a href="https://wa.me/+2349122896507" style={{ color: "inherit", textDecoration: "none" }}>+234 912 289 6507</a>
+                <a href="https://wa.me/+2348140679281" style={{ color: "inherit", textDecoration: "none" }}>+234 814 067 9281</a>
               </li>
               <li>
                 <Mail size={16} className={styles.contactIcon} />
