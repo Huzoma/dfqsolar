@@ -16,16 +16,16 @@ export default function PartnerSlider() {
     <section className={styles.section}>
       <div className="container">
         <div className={styles.header}>
-          <span className={styles.tag}>Strategic Alliances</span>
-          <h2 className={styles.title}>Our Global Partners</h2>
+          <span className={styles.tag}>Partners</span>
+          <h2 className={styles.title}>Who we build with</h2>
           <p className={styles.subtitle}>
-            We collaborate with tier-1 global manufacturers to deliver state-of-the-art solar engineering across Africa.
+            We work with tier-1 global manufacturers to deliver proven solar engineering across Africa.
           </p>
         </div>
 
         {/* Major Partner Highlight */}
         <div className={styles.majorPartnerCard}>
-          <div className={styles.badge}>Major Strategic Partner</div>
+          <div className={styles.badge}>Primary technology partner</div>
           <div className={styles.majorPartnerGrid}>
             <div className={styles.majorPartnerLogoCol}>
               <div className={styles.felicityLogoBox}>
@@ -61,7 +61,8 @@ export default function PartnerSlider() {
 
         {/* Global Partners Slider / Grid */}
         <div className={styles.sliderContainer}>
-          <p className={styles.otherTitle}>Authorized Tier-1 Partners</p>
+          <p className={styles.otherTitle}>Authorized tier-1 partners</p>
+          <div className={styles.sliderMask}>
           <div className={styles.track}>
             {/* Double the list for infinite marquee animation */}
             {[...partners, ...partners].map((partner, index) => (
@@ -77,6 +78,7 @@ export default function PartnerSlider() {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </div>

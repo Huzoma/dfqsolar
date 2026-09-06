@@ -24,7 +24,9 @@
 
 .outputsCol {
   padding: 40px;
-  background: linear-gradient(135deg, var(--dark-navy) 0%, #0c254c 100%);
+  background:
+    radial-gradient(90% 120% at 92% -10%, rgba(255, 198, 77, 0.16) 0%, rgba(242, 168, 28, 0) 52%),
+    linear-gradient(150deg, #0A2647 0%, #04101F 100%);
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -37,14 +39,25 @@
 }
 
 .colTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-headings);
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 600;
   color: var(--dark-navy);
   margin-bottom: 30px;
   position: relative;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.01em;
+}
+
+.colTitle::before {
+  content: "";
+  width: 22px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  flex-shrink: 0;
 }
 
 .whiteText {
@@ -128,8 +141,10 @@
 
 .valDisplay {
   font-family: var(--font-headings);
-  font-size: 16px;
-  font-weight: 700;
+  font-feature-settings: "tnum" 1;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   color: var(--primary-blue);
 }
 
@@ -212,8 +227,11 @@
 
 .resVal {
   font-family: var(--font-headings);
-  font-size: 18px;
-  font-weight: 700;
+  font-feature-settings: "tnum" 1;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   color: var(--white);
 }
 
@@ -239,16 +257,18 @@
 }
 
 .costLabel {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .costVal {
   font-family: var(--font-headings);
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--solar-orange);
+  font-feature-settings: "tnum" 1;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--gold);
 }
 
 .pricingNote {
@@ -282,32 +302,32 @@
 
 .savingsVal {
   font-family: var(--font-headings);
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--sun-yellow);
+  font-feature-settings: "tnum" 1;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--gold-glow);
 }
 
 .quoteBtn {
   width: 100%;
-  background: var(--solar-orange);
-  color: var(--white);
+  background: linear-gradient(135deg, var(--gold-glow) 0%, var(--gold) 55%, var(--gold-deep) 100%);
+  color: #2A1900;
   padding: 16px;
   border-radius: var(--radius-sm);
   font-family: var(--font-headings);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 15px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: -0.01em;
   text-align: center;
-  transition: var(--transition-fast);
-  box-shadow: 0 4px 14px rgba(247, 148, 29, 0.3);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: var(--shadow-gold);
   margin-top: auto;
 }
 
 .quoteBtn:hover {
-  background: #e08316;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(247, 148, 29, 0.4);
+  box-shadow: 0 12px 30px rgba(242, 168, 28, 0.4);
 }
 
 /* Solar Maintenance Option Card */

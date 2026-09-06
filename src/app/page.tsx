@@ -59,16 +59,32 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // WhatsApp hotline (digits only, no +) — inquiries are delivered here.
+  const WHATSAPP_NUMBER = "2349122896507";
+
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (contactForm.name && contactForm.email) {
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setContactForm({ name: "", email: "", phone: "", message: "" });
-        setQuoteSummary("");
-      }, 5000);
-    }
+    if (!contactForm.name || !contactForm.email) return;
+
+    const lines = [
+      "New inquiry from dfqsolarworld.com",
+      "",
+      `Name: ${contactForm.name}`,
+      `Email: ${contactForm.email}`,
+      contactForm.phone ? `Phone: ${contactForm.phone}` : "",
+      contactForm.message ? `Message: ${contactForm.message}` : "",
+      quoteSummary ? `Selected setup: ${quoteSummary}` : "",
+    ].filter(Boolean);
+
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
+    window.open(waUrl, "_blank", "noopener,noreferrer");
+
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setContactForm({ name: "", email: "", phone: "", message: "" });
+      setQuoteSummary("");
+    }, 6000);
   };
 
   const allProjects = [
@@ -98,47 +114,56 @@ export default function Home() {
         {activeTab === "home" && (
           <div className="animate-fade-in-up">
             {/* Hero Section */}
-            <section className={styles.heroSection} style={{ backgroundImage: "linear-gradient(to right, rgba(7, 28, 61, 0.95), rgba(7, 28, 61, 0.4)), url('/assets/hero-bg.png')" }}>
-              <div className="container">
+            <section className={styles.heroSection}>
+              <div className={styles.heroSun} aria-hidden="true" />
+              <div className={styles.heroPanels} aria-hidden="true" />
+              <div className={`container ${styles.heroInner}`}>
                 <div className={styles.heroGrid}>
                   <div className={styles.heroTextCol}>
-                    <span className={styles.heroSubtitle}>POWERING NIGERIA WITH</span>
+                    <span className={styles.heroEyebrow}>
+                      <Sun size={15} /> Solar &amp; lithium storage · Nigeria
+                    </span>
                     <h1 className={styles.heroTitle}>
-                      SMART SOLAR <span className={styles.orangeText}>SOLUTIONS</span>
+                      Energy independence,<br />
+                      <span className={styles.goldText}>engineered in Nigeria.</span>
                     </h1>
                     <p className={styles.heroDesc}>
-                      Reliable, affordable and sustainable solar energy for homes, businesses and industries.
+                      Solar and lithium backup that keeps the lights, the cold room and the
+                      production line running long after the grid goes dark.
                     </p>
                     <div className={styles.heroCtaRow}>
                       <button onClick={() => handleTabChange("quote")} className={styles.btnPrimary}>
-                        Get a Free Quote
+                        Get a free quote
                         <span className={styles.arrowIconWrapper}>
                           <ArrowRight className={`${styles.arrowIcon} ${styles.arrowNormal}`} size={16} />
                           <ArrowUpRight className={`${styles.arrowIcon} ${styles.arrowRightHovered}`} size={16} />
                         </span>
                       </button>
                       <button onClick={() => handleTabChange("solutions")} className={styles.btnSecondary}>
-                        Explore Solutions <ChevronRight size={16} className={styles.btnIcon} />
+                        Explore solutions <ChevronRight size={16} className={styles.btnIcon} />
                       </button>
                     </div>
 
-                    {/* Trust Indicators in Hero */}
-                    <div className={styles.heroTrustGrid}>
-                      <div className={styles.trustItem}>
-                        <Award size={20} className={styles.trustIcon} />
-                        <span>Certified Installers</span>
+                    {/* Hard-number proof strip */}
+                    <div className={styles.heroStats}>
+                      <div className={styles.heroStat}>
+                        <span className={`${styles.heroStatNum} tnum`}>1,500+</span>
+                        <span className={styles.heroStatLabel}>Systems installed</span>
                       </div>
-                      <div className={styles.trustItem}>
-                        <MapPin size={20} className={styles.trustIcon} />
-                        <span>Nationwide Installation</span>
+                      <div className={styles.heroStatDivider} aria-hidden="true" />
+                      <div className={styles.heroStat}>
+                        <span className={`${styles.heroStatNum} tnum`}>24/7</span>
+                        <span className={styles.heroStatLabel}>Backup power</span>
                       </div>
-                      <div className={styles.trustItem}>
-                        <Star size={20} className={styles.trustIcon} />
-                        <span>10+ Years Experience</span>
+                      <div className={styles.heroStatDivider} aria-hidden="true" />
+                      <div className={styles.heroStat}>
+                        <span className={`${styles.heroStatNum} tnum`}>36</span>
+                        <span className={styles.heroStatLabel}>States covered</span>
                       </div>
-                      <div className={styles.trustItem}>
-                        <Users size={20} className={styles.trustIcon} />
-                        <span>Thousands of Happy Customers</span>
+                      <div className={styles.heroStatDivider} aria-hidden="true" />
+                      <div className={styles.heroStat}>
+                        <span className={`${styles.heroStatNum} tnum`}>10&nbsp;yr</span>
+                        <span className={styles.heroStatLabel}>Storage warranty</span>
                       </div>
                     </div>
                   </div>
@@ -150,10 +175,10 @@ export default function Home() {
             <section className={`${styles.servicesSection} section-padding`}>
               <div className="container">
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionTag}>OUR SERVICES</span>
-                  <h2 className={styles.sectionTitle}>Complete Solar & Power Solutions</h2>
+                  <span className={styles.sectionTag}>What we do</span>
+                  <h2 className={styles.sectionTitle}>Complete solar &amp; power solutions</h2>
                   <p className={styles.sectionSubtitle}>
-                    We provide end-to-end renewable energy and security solutions tailored to your needs.
+                    End-to-end renewable energy and security systems, from the first site survey to long-term maintenance.
                   </p>
                 </div>
 
@@ -263,8 +288,8 @@ export default function Home() {
               <div className="container">
                 <div className={styles.productsHeaderRow}>
                   <div>
-                    <span className={styles.sectionTag}>FEATURED PRODUCTS</span>
-                    <h2 className={styles.productsTitle}>Top Renewable Equipment</h2>
+                    <span className={styles.sectionTag}>Equipment</span>
+                    <h2 className={styles.productsTitle}>The kit we build with</h2>
                   </div>
                   <button onClick={() => handleTabChange("products")} className={styles.viewAllBtn}>
                     View All
@@ -327,10 +352,10 @@ export default function Home() {
             <section className={`${styles.projectsSliderSection} section-padding`}>
               <div className="container">
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionTag}>CASE STUDIES</span>
-                  <h2 className={styles.sectionTitle}>Powering Projects Around The World</h2>
+                  <span className={styles.sectionTag}>Case studies</span>
+                  <h2 className={styles.sectionTitle}>Power delivered, site by site</h2>
                   <p className={styles.sectionSubtitle}>
-                    Explore our recent installations demonstrating our engineering excellence across various sectors.
+                    Recent installations across commercial, industrial, utility and residential sites.
                   </p>
                 </div>
                 <ProjectSlider />
@@ -372,8 +397,8 @@ export default function Home() {
             <section className={`${styles.aboutHero} section-padding`}>
               <div className="container">
                 <div className={styles.aboutHeader}>
-                  <span className={styles.sectionTag}>About Us</span>
-                  <h2 className={styles.aboutMainTitle}>Empowering Africa with Clean Energy</h2>
+                  <span className={styles.sectionTag}>About us</span>
+                  <h2 className={styles.aboutMainTitle}>Clean, dependable power for Africa</h2>
                   <p className={styles.aboutMainDesc}>
                     DFQ Solar World is a premier renewable energy developer and engineering contractor. Founded on the principles of quality, reliability, and innovation, we provide high-performance off-grid and grid-connected solar power systems.
                   </p>
@@ -392,7 +417,7 @@ export default function Home() {
                       <Globe size={32} />
                     </div>
                     <h3>Our Vision</h3>
-                    <p>To become Africa's leading renewable energy enterprise, recognized for world-class solar engineering and community-focused electrification programs.</p>
+                    <p>To become Africa&apos;s leading renewable energy enterprise, recognized for world-class solar engineering and community-focused electrification programs.</p>
                   </div>
                 </div>
 
@@ -440,10 +465,10 @@ export default function Home() {
             <section className="section-padding">
               <div className="container">
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionTag}>Engineered Services</span>
-                  <h2 className={styles.sectionTitle}>Solar Solutions Customized for Every Scale</h2>
+                  <span className={styles.sectionTag}>Solutions</span>
+                  <h2 className={styles.sectionTitle}>Sized for every scale</h2>
                   <p className={styles.sectionSubtitle}>
-                    We handle everything from initial feasibility analysis and 3D layout simulation to delivery, engineering construction, and asset maintenance.
+                    From a feasibility study and 3D layout to construction and long-term maintenance, we handle the whole build.
                   </p>
                 </div>
 
@@ -544,10 +569,10 @@ export default function Home() {
             <section className="section-padding">
               <div className="container">
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionTag}>Global Portfolio</span>
-                  <h2 className={styles.sectionTitle}>Engineering Projects Worldwide</h2>
+                  <span className={styles.sectionTag}>Portfolio</span>
+                  <h2 className={styles.sectionTitle}>Projects built to spec</h2>
                   <p className={styles.sectionSubtitle}>
-                    A showcase of our installations engineered to international standards across commercial, industrial, utility, and residential sectors.
+                    Installations engineered to international standards across commercial, industrial, utility and residential sites.
                   </p>
                 </div>
 
@@ -559,7 +584,7 @@ export default function Home() {
                       className={`${styles.filterBtn} ${projectFilter === filter ? styles.filterActive : ""}`}
                       onClick={() => setProjectFilter(filter)}
                     >
-                      {filter.toUpperCase()}
+                      {filter === "all" ? "All projects" : filter.charAt(0).toUpperCase() + filter.slice(1)}
                     </button>
                   ))}
                 </div>
@@ -591,10 +616,10 @@ export default function Home() {
             <section className="section-padding">
               <div className="container">
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionTag}>Product Catalog</span>
-                  <h2 className={styles.sectionTitle}>High-Efficiency Solar Components</h2>
+                  <span className={styles.sectionTag}>Catalog</span>
+                  <h2 className={styles.sectionTitle}>High-efficiency components</h2>
                   <p className={styles.sectionSubtitle}>
-                    We supply and install only grade-A certified products from leading manufacturers, ensuring maximum reliability and system lifespans.
+                    We supply and install only grade-A certified products from leading manufacturers, built to last the system&apos;s lifespan.
                   </p>
                 </div>
 
@@ -670,10 +695,10 @@ export default function Home() {
             <section className="section-padding">
               <div className="container">
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionTag}>Interactive Calculator</span>
-                  <h2 className={styles.sectionTitle}>Sizing & Cost Estimator</h2>
+                  <span className={styles.sectionTag}>Estimator</span>
+                  <h2 className={styles.sectionTitle}>Size your system in seconds</h2>
                   <p className={styles.sectionSubtitle}>
-                    Slide your current electricity parameters to calculate the recommended solar array, inverter size, battery capacity, and estimated installation cost.
+                    Set your bill, property type and backup needs. We&apos;ll recommend the array, inverter, battery capacity and an installed-cost range.
                   </p>
                 </div>
                 <Calculator onQuoteRequest={handleCalculatorQuoteRequest} />
@@ -688,10 +713,10 @@ export default function Home() {
             <section className="section-padding">
               <div className="container">
                 <div className={styles.sectionHeader}>
-                  <span className={styles.sectionTag}>Get In Touch</span>
-                  <h2 className={styles.sectionTitle}>Ready to Power Your Property?</h2>
+                  <span className={styles.sectionTag}>Get in touch</span>
+                  <h2 className={styles.sectionTitle}>Ready to power your property?</h2>
                   <p className={styles.sectionSubtitle}>
-                    Send us a message or request a site survey. Our engineering team will review your specs and contact you within 24 hours.
+                    Send your details over WhatsApp and our engineering team will review your specs and reply, usually within 24 hours.
                   </p>
                 </div>
 
@@ -755,12 +780,12 @@ export default function Home() {
                       </div>
 
                       <button type="submit" className={styles.formSubmitBtn}>
-                        Submit Request
+                        Send via WhatsApp
                       </button>
 
                       {submitted && (
                         <div className={styles.toastSuccess}>
-                          <CheckCircle size={18} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} /> Request received successfully! Our engineer will call you shortly.
+                          <CheckCircle size={18} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} /> Opening WhatsApp with your details. Press send there and our team will reply shortly.
                         </div>
                       )}
                     </form>
