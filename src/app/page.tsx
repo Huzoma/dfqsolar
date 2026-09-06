@@ -59,16 +59,32 @@ export default function Home() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // WhatsApp hotline (digits only, no +) — inquiries are delivered here.
+  const WHATSAPP_NUMBER = "2349122896507";
+
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (contactForm.name && contactForm.email) {
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setContactForm({ name: "", email: "", phone: "", message: "" });
-        setQuoteSummary("");
-      }, 5000);
-    }
+    if (!contactForm.name || !contactForm.email) return;
+
+    const lines = [
+      "New inquiry from dfqsolarworld.com",
+      "",
+      `Name: ${contactForm.name}`,
+      `Email: ${contactForm.email}`,
+      contactForm.phone ? `Phone: ${contactForm.phone}` : "",
+      contactForm.message ? `Message: ${contactForm.message}` : "",
+      quoteSummary ? `Selected setup: ${quoteSummary}` : "",
+    ].filter(Boolean);
+
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
+    window.open(waUrl, "_blank", "noopener,noreferrer");
+
+    setSubmitted(true);
+    setTimeout(() => {
+      setSubmitted(false);
+      setContactForm({ name: "", email: "", phone: "", message: "" });
+      setQuoteSummary("");
+    }, 6000);
   };
 
   const allProjects = [
@@ -401,7 +417,7 @@ export default function Home() {
                       <Globe size={32} />
                     </div>
                     <h3>Our Vision</h3>
-                    <p>To become Africa's leading renewable energy enterprise, recognized for world-class solar engineering and community-focused electrification programs.</p>
+                    <p>To become Africa&apos;s leading renewable energy enterprise, recognized for world-class solar engineering and community-focused electrification programs.</p>
                   </div>
                 </div>
 
@@ -603,7 +619,7 @@ export default function Home() {
                   <span className={styles.sectionTag}>Catalog</span>
                   <h2 className={styles.sectionTitle}>High-efficiency components</h2>
                   <p className={styles.sectionSubtitle}>
-                    We supply and install only grade-A certified products from leading manufacturers, built to last the system's lifespan.
+                    We supply and install only grade-A certified products from leading manufacturers, built to last the system&apos;s lifespan.
                   </p>
                 </div>
 
@@ -682,7 +698,7 @@ export default function Home() {
                   <span className={styles.sectionTag}>Estimator</span>
                   <h2 className={styles.sectionTitle}>Size your system in seconds</h2>
                   <p className={styles.sectionSubtitle}>
-                    Set your bill, property type and backup needs. We'll recommend the array, inverter, battery capacity and an installed-cost range.
+                    Set your bill, property type and backup needs. We&apos;ll recommend the array, inverter, battery capacity and an installed-cost range.
                   </p>
                 </div>
                 <Calculator onQuoteRequest={handleCalculatorQuoteRequest} />
@@ -700,7 +716,7 @@ export default function Home() {
                   <span className={styles.sectionTag}>Get in touch</span>
                   <h2 className={styles.sectionTitle}>Ready to power your property?</h2>
                   <p className={styles.sectionSubtitle}>
-                    Send a message or request a site survey. Our engineering team reviews your specs and gets back to you within 24 hours.
+                    Send your details over WhatsApp and our engineering team will review your specs and reply, usually within 24 hours.
                   </p>
                 </div>
 
@@ -764,12 +780,12 @@ export default function Home() {
                       </div>
 
                       <button type="submit" className={styles.formSubmitBtn}>
-                        Submit Request
+                        Send via WhatsApp
                       </button>
 
                       {submitted && (
                         <div className={styles.toastSuccess}>
-                          <CheckCircle size={18} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} /> Request received successfully! Our engineer will call you shortly.
+                          <CheckCircle size={18} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} /> Opening WhatsApp with your details. Press send there and our team will reply shortly.
                         </div>
                       )}
                     </form>
