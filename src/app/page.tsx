@@ -30,12 +30,20 @@ import {
   Contact as ContactIcon,
   CheckCircle
 } from "lucide-react";
+import { z } from "zod";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PartnerSlider from "@/components/PartnerSlider";
 import ProjectSlider from "@/components/ProjectSlider";
 import Calculator from "@/components/Calculator";
 import styles from "./page.module.css";
+
+const contactFormSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().optional(),
+  message: z.string().min(10, "Please provide more details in your message"),
+});
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("home");
@@ -46,6 +54,7 @@ export default function Home() {
     phone: "",
     message: "",
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [projectFilter, setProjectFilter] = useState("all");
 
@@ -64,7 +73,19 @@ export default function Home() {
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!contactForm.name || !contactForm.email) return;
+
+    const result = contactFormSchema.safeParse(contactForm);
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.issues.forEach((issue) => {
+        if (issue.path[0]) {
+          fieldErrors[issue.path[0] as string] = issue.message;
+        }
+      });
+      setErrors(fieldErrors);
+      return;
+    }
+    setErrors({});
 
     const lines = [
       "New inquiry from dfqsolarworld.com",
@@ -736,23 +757,29 @@ export default function Home() {
                           <label className={styles.formLabel}>Full Name *</label>
                           <input
                             type="text"
-                            required
                             placeholder="John Doe"
-                            className={styles.formInput}
+                            className={`${styles.formInput} ${errors.name ? styles.inputError : ""}`}
                             value={contactForm.name}
-                            onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
+                            onChange={(e) => {
+                              setContactForm({ ...contactForm, name: e.target.value });
+                              if (errors.name) setErrors({ ...errors, name: "" });
+                            }}
                           />
+                          {errors.name && <span className={styles.errorMessage}>{errors.name}</span>}
                         </div>
                         <div className={styles.formGroup}>
                           <label className={styles.formLabel}>Email Address *</label>
                           <input
                             type="email"
-                            required
                             placeholder="john@example.com"
-                            className={styles.formInput}
+                            className={`${styles.formInput} ${errors.email ? styles.inputError : ""}`}
                             value={contactForm.email}
-                            onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
+                            onChange={(e) => {
+                              setContactForm({ ...contactForm, email: e.target.value });
+                              if (errors.email) setErrors({ ...errors, email: "" });
+                            }}
                           />
+                          {errors.email && <span className={styles.errorMessage}>{errors.email}</span>}
                         </div>
                       </div>
 
@@ -761,22 +788,29 @@ export default function Home() {
                         <input
                           type="tel"
                           placeholder="+234 814 067 9281"
-                          className={styles.formInput}
+                          className={`${styles.formInput} ${errors.phone ? styles.inputError : ""}`}
                           value={contactForm.phone}
-                          onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
+                          onChange={(e) => {
+                            setContactForm({ ...contactForm, phone: e.target.value });
+                            if (errors.phone) setErrors({ ...errors, phone: "" });
+                          }}
                         />
+                        {errors.phone && <span className={styles.errorMessage}>{errors.phone}</span>}
                       </div>
 
                       <div className={styles.formGroup}>
                         <label className={styles.formLabel}>Message & Site Details *</label>
                         <textarea
                           rows={5}
-                          required
                           placeholder="Describe your load requirements or copy calculator results..."
-                          className={styles.formTextarea}
+                          className={`${styles.formTextarea} ${errors.message ? styles.inputError : ""}`}
                           value={contactForm.message}
-                          onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
+                          onChange={(e) => {
+                            setContactForm({ ...contactForm, message: e.target.value });
+                            if (errors.message) setErrors({ ...errors, message: "" });
+                          }}
                         />
+                        {errors.message && <span className={styles.errorMessage}>{errors.message}</span>}
                       </div>
 
                       <button type="submit" className={styles.formSubmitBtn}>

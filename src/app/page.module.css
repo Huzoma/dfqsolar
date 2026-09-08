@@ -1180,6 +1180,18 @@
   border-color: var(--primary-blue);
 }
 
+.inputError {
+  border-color: #ef4444 !important;
+  background: #fef2f2 !important;
+}
+
+.errorMessage {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
 .formSubmitBtn {
   background: linear-gradient(135deg, var(--gold-glow) 0%, var(--gold) 55%, var(--gold-deep) 100%);
   color: #2A1900;
