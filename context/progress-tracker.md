@@ -3,23 +3,27 @@
 Update this file after every meaningful implementation change.
 
 ## Current Phase
-- [e.g. System Design / Auth Implementation / Core Features]
+- Frontend Foundation & Context Setup
 
 ## Current Goal
-- [What you are building right now]
+- Establish development standards and enforce code quality rules
 
 ## Completed
-- None yet.
+- Defined `ai-workflow-rules.md`, `architecture.md`, and `code-standards.md` to establish constraints.
+- Integrated the AI context framework.
+- Wired contact form to WhatsApp hotline (`2348140679281`).
+- Implemented "Sun & Voltage" UI design identity.
 
 ## In Progress
-- None yet.
+- Reviewing next features to build following the new `ai-workflow-rules`.
 
 ## Next Up
-- [First unit to build]
+- Enforce strict typing/validation (e.g., add Zod to the contact form in `page.tsx`).
 
 ## Open Questions
-- [Any unresolved product or technical decisions]
+- What is the primary feature you would like to build or refactor next?
 
 ## Architecture Decisions & Lessons Learned
-- [Decisions made that affect the system design or data model — include why the decision was made]
-- [Document any build failures here and the permanent pattern adopted to fix them so the AI does not repeat the mistake.]
+- **Stack Definition:** Next.js 16 (App Router) + React 19.
+- **Styling constraint:** Use CSS Modules (`*.module.css`) to enforce scoped component design.
+- **Security Constraint:** Zod is required for runtime schema validation on all forms and API routes.
