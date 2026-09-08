@@ -60,7 +60,7 @@ export default function Home() {
   };
 
   // WhatsApp hotline (digits only, no +) — inquiries are delivered here.
-  const WHATSAPP_NUMBER = "2349122896507";
+  const WHATSAPP_NUMBER = "2348140679281";
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -760,7 +760,7 @@ export default function Home() {
                         <label className={styles.formLabel}>Phone Number</label>
                         <input
                           type="tel"
-                          placeholder="+234 912 289 6507"
+                          placeholder="+234 814 067 9281"
                           className={styles.formInput}
                           value={contactForm.phone}
                           onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
@@ -800,8 +800,8 @@ export default function Home() {
                         <div>
                           <h5>Phone & WhatsApp Hotline</h5>
                           <p>
-                            <a href="https://wa.me/+2349122896507" style={{ color: "inherit", textDecoration: "none" }}>
-                              +234 912 289 6507
+                            <a href="https://wa.me/+2348140679281" style={{ color: "inherit", textDecoration: "none" }}>
+                              +234 814 067 9281
                             </a>
                           </p>
                         </div>

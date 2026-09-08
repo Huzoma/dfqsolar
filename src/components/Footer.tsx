@@ -39,7 +39,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
               DFQ Solar World is a global leader in solar energy solutions. We are committed to providing clean, reliable, and affordable energy for a sustainable future.
             </p>
             <div className={styles.socials}>
-              <a href="#" className={styles.socialLink} aria-label="Facebook">
+              <a href="https://www.facebook.com/profile.php?id=61592429660212&sk=about" className={styles.socialLink} aria-label="Facebook">
                 <Facebook size={16} />
               </a>
               <a href="#" className={styles.socialLink} aria-label="Instagram">
@@ -82,7 +82,7 @@ export default function Footer({ setActiveTab }: FooterProps) {
             <ul className={styles.contactInfo}>
               <li>
                 <Phone size={16} className={styles.contactIcon} />
-                <a href="https://wa.me/+2349122896507" style={{ color: "inherit", textDecoration: "none" }}>+234 912 289 6507</a>
+                <a href="https://wa.me/+2348140679281" style={{ color: "inherit", textDecoration: "none" }}>+234 814 067 9281</a>
               </li>
               <li>
                 <Mail size={16} className={styles.contactIcon} />
