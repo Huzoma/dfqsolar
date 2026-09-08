@@ -1080,6 +1080,24 @@
   flex-direction: column;
 }
 
+.productTabImg {
+  margin: -40px -40px 24px -40px;
+  height: 240px;
+  background: var(--light-bg);
+  overflow: hidden;
+}
+
+.productTabImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.productTabCard:hover .productTabImg img {
+  transform: scale(1.03);
+}
+
 .prodTabIconBox {
   display: flex;
   align-items: center;

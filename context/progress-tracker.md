@@ -14,6 +14,7 @@ Update this file after every meaningful implementation change.
 - Wired contact form to WhatsApp hotline (`2348140679281`).
 - Implemented "Sun & Voltage" UI design identity.
 - Enforced strict typing and Zod validation for the contact form in `page.tsx`.
+- Reconciled listed services phrasing and added full-width product imagery to the catalog tab.
 
 ## In Progress
 - Awaiting the next feature assignment.

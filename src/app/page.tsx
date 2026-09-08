@@ -240,7 +240,7 @@ export default function Home() {
                     <div className={styles.serviceIconBox}>
                       <Video size={24} />
                     </div>
-                    <h4 className={styles.serviceTitle}>CCTV Installation</h4>
+                    <h4 className={styles.serviceTitle}>CCTV Camera Installation</h4>
                     <p className={styles.serviceDesc}>Full security cameras setup with remote monitoring solar backups.</p>
                   </div>
 
@@ -256,7 +256,7 @@ export default function Home() {
                     <div className={styles.serviceIconBox}>
                       <Wrench size={24} />
                     </div>
-                    <h4 className={styles.serviceTitle}>Solar Maintenance</h4>
+                    <h4 className={styles.serviceTitle}>Solar Maintenance & Upgrades</h4>
                     <p className={styles.serviceDesc}>Regular panel washing, battery health audits, and inverter upgrades.</p>
                   </div>
 
@@ -648,8 +648,8 @@ export default function Home() {
                   {/* Panels */}
                   <div className={styles.productTabCard}>
                     <div className={styles.productBadge}>Tier-1</div>
-                    <div className={styles.prodTabIconBox}>
-                      <Sun size={28} />
+                    <div className={styles.productTabImg}>
+                      <img src="/assets/product-panel.png" alt="DFQ Solar Panels" />
                     </div>
                     <h3>DFQ Solar Panels</h3>
                     <p className={styles.productDesc}>High-efficiency N-Type Bifacial Monocrystalline modules (550W+). Delivers exceptional output even in low-light and high-temperature environments.</p>
@@ -663,8 +663,8 @@ export default function Home() {
                   {/* Batteries */}
                   <div className={`${styles.productTabCard} ${styles.productHighlight}`}>
                     <div className={styles.productBadgeFeatured}>Featured Partner Product</div>
-                    <div className={styles.prodTabIconBox}>
-                      <BatteryCharging size={28} />
+                    <div className={styles.productTabImg}>
+                      <img src="/assets/product-battery.png" alt="Felicity Solar Lithium Battery" />
                     </div>
                     <h3>Felicity Solar Lithium Battery</h3>
                     <p className={styles.productDesc}>Wall-mounted Lithium Iron Phosphate (LiFePO4) storage systems (5kWh & 10kWh packs). Built for continuous cycle durability in demanding climates.</p>
@@ -678,8 +678,8 @@ export default function Home() {
                   {/* Inverters */}
                   <div className={styles.productTabCard}>
                     <div className={styles.productBadge}>Smart Tech</div>
-                    <div className={styles.prodTabIconBox}>
-                      <Cpu size={28} />
+                    <div className={styles.productTabImg}>
+                      <img src="/assets/product-inverter.png" alt="DFQ Hybrid Inverters" />
                     </div>
                     <h3>DFQ Hybrid Inverters</h3>
                     <p className={styles.productDesc}>Smart multi-mode hybrid inverters (3.5kVA to 50kVA). Coordinates power between solar arrays, lithium battery storage, utilities, and backup generators.</p>
@@ -693,8 +693,8 @@ export default function Home() {
                   {/* Solar Lights */}
                   <div className={styles.productTabCard}>
                     <div className={styles.productBadge}>Outdoor</div>
-                    <div className={styles.prodTabIconBox}>
-                      <Zap size={28} />
+                    <div className={styles.productTabImg}>
+                      <img src="/assets/product-streetlight.jpg" alt="Smart Solar Street Lights" />
                     </div>
                     <h3>Smart Solar Street Lights</h3>
                     <p className={styles.productDesc}>All-in-one solar street and compound lighting solutions. Features high-capacity lithium buffers, daylight sensors, and motion dimmers.</p>
