@@ -31,6 +31,7 @@ import {
   CheckCircle
 } from "lucide-react";
 import { z } from "zod";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PartnerSlider from "@/components/PartnerSlider";
@@ -649,7 +650,12 @@ export default function Home() {
                   <div className={styles.productTabCard}>
                     <div className={styles.productBadge}>Tier-1</div>
                     <div className={styles.productTabImg}>
-                      <img src="/assets/product-panel.png" alt="DFQ Solar Panels" />
+                      <Image
+                        src="/assets/product-panel.png"
+                        alt="Bifacial monocrystalline DFQ solar panel array in direct sunlight"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
                     </div>
                     <h3>DFQ Solar Panels</h3>
                     <p className={styles.productDesc}>High-efficiency N-Type Bifacial Monocrystalline modules (550W+). Delivers exceptional output even in low-light and high-temperature environments.</p>
@@ -664,7 +670,12 @@ export default function Home() {
                   <div className={`${styles.productTabCard} ${styles.productHighlight}`}>
                     <div className={styles.productBadgeFeatured}>Featured Partner Product</div>
                     <div className={styles.productTabImg}>
-                      <img src="/assets/product-battery.png" alt="Felicity Solar Lithium Battery" />
+                      <Image
+                        src="/assets/product-battery.png"
+                        alt="Wall-mounted Felicity Solar LiFePO4 lithium battery units"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
                     </div>
                     <h3>Felicity Solar Lithium Battery</h3>
                     <p className={styles.productDesc}>Wall-mounted Lithium Iron Phosphate (LiFePO4) storage systems (5kWh & 10kWh packs). Built for continuous cycle durability in demanding climates.</p>
@@ -679,7 +690,12 @@ export default function Home() {
                   <div className={styles.productTabCard}>
                     <div className={styles.productBadge}>Smart Tech</div>
                     <div className={styles.productTabImg}>
-                      <img src="/assets/product-inverter.png" alt="DFQ Hybrid Inverters" />
+                      <Image
+                        src="/assets/product-inverter.png"
+                        alt="DFQ hybrid inverter with digital monitoring display"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
                     </div>
                     <h3>DFQ Hybrid Inverters</h3>
                     <p className={styles.productDesc}>Smart multi-mode hybrid inverters (3.5kVA to 50kVA). Coordinates power between solar arrays, lithium battery storage, utilities, and backup generators.</p>
@@ -694,7 +710,12 @@ export default function Home() {
                   <div className={styles.productTabCard}>
                     <div className={styles.productBadge}>Outdoor</div>
                     <div className={styles.productTabImg}>
-                      <img src="/assets/product-streetlight.jpg" alt="Smart Solar Street Lights" />
+                      <Image
+                        src="/assets/product-streetlight.jpg"
+                        alt="All-in-one smart solar street light mounted on a pole"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
                     </div>
                     <h3>Smart Solar Street Lights</h3>
                     <p className={styles.productDesc}>All-in-one solar street and compound lighting solutions. Features high-capacity lithium buffers, daylight sensors, and motion dimmers.</p>
