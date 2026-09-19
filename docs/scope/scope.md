@@ -14,7 +14,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 1 | Stack & architecture | Foundation | existing |
 | 2 | Design system & UI foundation | Foundation | existing |
 | 3 | Core landing & WhatsApp integration | Foundation | existing |
-| 4 | Fix Calculator lint error | Slice 1 | planned |
+| 4 | Fix Calculator lint error | Slice 1 | in-progress |
 | 5 | Fix Hydration mismatch | Slice 1 | planned |
 | 6 | Interactive Product Detail Views | Slice 2 | planned |
 | 7 | SEO, meta tags, & structured data | Slice 3 | planned |
@@ -36,7 +36,7 @@ Public-facing landing page with product catalog, calculator, and contact form wi
 ### 4. Fix Calculator lint error
 Resolve the React Compiler rule violation for calling setState synchronously within an effect.
 **Done when:** `Calculator.tsx` passes `npm run lint` cleanly.
-- [ ] Build it: `/develop fix calculator lint error`
+- [x] Build it: `/develop fix calculator lint error`
 
 ### 5. Fix Hydration mismatch
 Identify and resolve the hydration mismatch currently logged at runtime on the homepage.

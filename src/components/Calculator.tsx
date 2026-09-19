@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Home, Building2, Factory, Sun, ClipboardList, Zap, BatteryCharging, Wrench, CheckSquare, Square } from "lucide-react";
 import styles from "./Calculator.module.css";
 
@@ -32,80 +32,60 @@ export default function Calculator({ onQuoteRequest }: CalculatorProps) {
   };
 
   // Calculation results
-  const [systemSize, setSystemSize] = useState(5); // kW
-  const [numPanels, setNumPanels] = useState(10);
-  const [batterySize, setBatterySize] = useState(10); // kWh (Felicity Solar)
-  const [inverterSize, setInverterSize] = useState(5); // kVA
-  const [estCostMin, setEstCostMin] = useState(2500000); // Naira
-  const [estCostMax, setEstCostMax] = useState(3200000); // Naira
-  const [annualSavings, setAnnualSavings] = useState(480000); // Naira
-  const [co2Saved, setCo2Saved] = useState(3.8); // Tons/year
+  let loadKW = 0;
 
-  useEffect(() => {
-    let loadKW = 0;
+  switch (propertyType) {
+    case "residential-small":
+      loadKW = monthlyBill / 12000;
+      break;
+    case "residential-medium":
+      loadKW = monthlyBill / 10000;
+      break;
+    case "commercial":
+      loadKW = monthlyBill / 8000;
+      break;
+    case "industrial":
+      loadKW = monthlyBill / 7000;
+      break;
+    default:
+      loadKW = 5;
+  }
 
-    switch (propertyType) {
-      case "residential-small":
-        loadKW = monthlyBill / 12000;
-        break;
-      case "residential-medium":
-        loadKW = monthlyBill / 10000;
-        break;
-      case "commercial":
-        loadKW = monthlyBill / 8000;
-        break;
-      case "industrial":
-        loadKW = monthlyBill / 7000;
-        break;
-      default:
-        loadKW = 5;
-    }
+  loadKW = Math.max(1.5, Math.min(250, loadKW));
 
-    loadKW = Math.max(1.5, Math.min(250, loadKW));
+  // Calculate solar sizing (kW)
+  const systemSize = Math.round(loadKW * 10) / 10;
+  // Assume 550W panels
+  const numPanels = Math.ceil((systemSize * 1000) / 550);
 
-    // Calculate solar sizing (kW)
-    const solarKW = Math.round(loadKW * 10) / 10;
-    // Assume 550W panels
-    const panelsCount = Math.ceil((solarKW * 1000) / 550);
+  // Calculate inverter size (kVA)
+  let inverterSize = 3.5;
+  if (systemSize <= 3.5) inverterSize = 3.5;
+  else if (systemSize <= 6) inverterSize = 5.0;
+  else if (systemSize <= 12) inverterSize = 10.0;
+  else if (systemSize <= 24) inverterSize = 20.0;
+  else if (systemSize <= 60) inverterSize = 50.0;
+  else inverterSize = 100.0;
 
-    // Calculate inverter size (kVA)
-    let recommendedInverter = 3.5;
-    if (solarKW <= 3.5) recommendedInverter = 3.5;
-    else if (solarKW <= 6) recommendedInverter = 5.0;
-    else if (solarKW <= 12) recommendedInverter = 10.0;
-    else if (solarKW <= 24) recommendedInverter = 20.0;
-    else if (solarKW <= 60) recommendedInverter = 50.0;
-    else recommendedInverter = 100.0;
+  // Calculate battery sizing (kWh)
+  const backupLoad = Math.max(1, loadKW * 0.4);
+  const batterySize = Math.round(backupLoad * backupHours * 10) / 10;
 
-    // Calculate battery sizing (kWh)
-    const backupLoad = Math.max(1, loadKW * 0.4);
-    const storageKWh = Math.round(backupLoad * backupHours * 10) / 10;
+  // Calculate cost in Naira
+  const panelsCost = numPanels * 280000;
+  const inverterCost = inverterSize * 250000 + 400000;
+  const batteryCost = (batterySize / 5) * 1400000;
+  const installationCost = (panelsCost + inverterCost + batteryCost) * 0.12;
 
-    // Calculate cost in Naira
-    const panelsCost = panelsCount * 280000;
-    const inverterCost = recommendedInverter * 250000 + 400000;
-    const batteryCost = (storageKWh / 5) * 1400000;
-    const installationCost = (panelsCost + inverterCost + batteryCost) * 0.12;
+  const maintenanceFee = includeMaintenance ? getMaintenancePrice(propertyType) : 0;
+  const totalCost = panelsCost + inverterCost + batteryCost + installationCost + maintenanceFee;
+  const estCostMin = Math.round((totalCost * 0.9) / 50000) * 50000;
+  const estCostMax = Math.round((totalCost * 1.1) / 50000) * 50000;
 
-    const maintenanceFee = includeMaintenance ? getMaintenancePrice(propertyType) : 0;
-    const totalCost = panelsCost + inverterCost + batteryCost + installationCost + maintenanceFee;
-    const minCost = Math.round((totalCost * 0.9) / 50000) * 50000;
-    const maxCost = Math.round((totalCost * 1.1) / 50000) * 50000;
-
-    // Calculate savings and CO2
-    const estimatedKwhPerYear = solarKW * 4.5 * 365;
-    const savings = Math.round(estimatedKwhPerYear * 160);
-    const co2 = Math.round((estimatedKwhPerYear * 0.0006) * 10) / 10;
-
-    setSystemSize(solarKW);
-    setNumPanels(panelsCount);
-    setBatterySize(storageKWh);
-    setInverterSize(recommendedInverter);
-    setEstCostMin(minCost);
-    setEstCostMax(maxCost);
-    setAnnualSavings(savings);
-    setCo2Saved(co2);
-  }, [propertyType, monthlyBill, backupHours, includeMaintenance]);
+  // Calculate savings and CO2
+  const estimatedKwhPerYear = systemSize * 4.5 * 365;
+  const annualSavings = Math.round(estimatedKwhPerYear * 160);
+  const co2Saved = Math.round((estimatedKwhPerYear * 0.0006) * 10) / 10;
 
   const handleRequestQuote = () => {
     const maintInfo = includeMaintenance 
