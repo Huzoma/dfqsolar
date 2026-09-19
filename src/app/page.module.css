@@ -1069,50 +1069,159 @@
 }
 
 .productTabCard {
+  /* Single source of truth: the media block bleeds back out by exactly this
+     amount, so padding and full-bleed can never drift apart per breakpoint. */
+  --product-card-pad: 40px;
+
   background: var(--white);
   border-radius: var(--radius-lg);
-  padding: 40px;
+  padding: var(--product-card-pad);
   box-shadow: var(--shadow-soft);
   border: 1px solid rgba(7, 28, 61, 0.03);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: box-shadow var(--transition-normal);
 }
 
+.productTabCard:hover {
+  box-shadow: var(--shadow-medium);
+}
+
+/* Featured card: gold ring so "Featured Partner Product" reads as a genuine
+   distinction rather than a label with no supporting treatment. */
+.productHighlight {
+  border-color: rgba(242, 168, 28, 0.35);
+  box-shadow: 0 0 0 1px rgba(242, 168, 28, 0.18), var(--shadow-medium);
+}
+
+.productHighlight:hover {
+  box-shadow: 0 0 0 1px rgba(242, 168, 28, 0.3), var(--shadow-premium);
+}
+
+/* --- Product media ------------------------------------------------------ */
+/* The catalog art is square (1024x1024). A fixed 240px height on a ~582px
+   wide card is 2.42:1, so `cover` discarded ~59% of every photo's height and
+   sliced each product through the middle. A 4:3 frame keeps the subject whole
+   (the panel, battery, inverter and street-light are all vertical subjects). */
 .productTabImg {
-  margin: -40px -40px 24px -40px;
-  height: 240px;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  flex-shrink: 0;
+  margin: calc(var(--product-card-pad) * -1) calc(var(--product-card-pad) * -1) 24px;
   background: var(--light-bg);
   overflow: hidden;
 }
 
 .productTabImg img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-normal);
+  object-position: center;
+  transition: transform var(--transition-slow);
 }
 
 .productTabCard:hover .productTabImg img {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
-.prodTabIconBox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
+/* Scrim: holds badge contrast over an arbitrary photo. */
+.productTabImg::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 45%;
+  background: linear-gradient(to bottom, rgba(4, 16, 31, 0.45), rgba(4, 16, 31, 0));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- Product badges ----------------------------------------------------- */
+/* Both classes were referenced in the JSX but never defined, so they resolved
+   to `undefined` and the labels were buried under the media block's bleed. */
+.productBadge,
+.productBadgeFeatured {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  font-family: var(--font-headings);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 12px;
   border-radius: var(--radius-sm);
-  background: rgba(11, 61, 145, 0.05);
-  color: var(--primary-blue);
+  white-space: nowrap;
+}
+
+.productBadge {
+  background: rgba(4, 16, 31, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--white);
+}
+
+.productBadgeFeatured {
+  background: linear-gradient(135deg, var(--gold-glow) 0%, var(--gold) 60%, var(--gold-deep) 100%);
+  color: #2A1900;
+  box-shadow: var(--shadow-gold);
+}
+
+/* --- Product copy ------------------------------------------------------- */
+.productTabCard h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.productDesc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-secondary);
   margin-bottom: 20px;
 }
 
-.productHighlight .prodTabIconBox {
-  background: rgba(247, 148, 29, 0.1);
-  color: var(--solar-orange);
+/* `margin-top: auto` bottom-aligns the spec block so the divider lines up
+   across cards in a row regardless of description length. */
+.productSpecsList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-light);
+}
+
+.productSpecsList li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.productSpecsList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px rgba(242, 168, 28, 0.15);
+}
+
+.productHighlight .productSpecsList li::before {
+  background: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(11, 61, 145, 0.12);
+}
+
+@media (max-width: 576px) {
+  .productTabCard {
+    --product-card-pad: 24px;
+  }
 }
 
 /* CONTACT PAGE */
