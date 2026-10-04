@@ -15,7 +15,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 2 | Design system & UI foundation | Foundation | existing |
 | 3 | Core landing & WhatsApp integration | Foundation | existing |
 | 4 | Fix Calculator lint error | Slice 1 | in-progress |
-| 5 | Fix Hydration mismatch | Slice 1 | planned |
+| 5 | Fix Hydration mismatch | Slice 1 | in-progress |
 | 6 | Interactive Product Detail Views | Slice 2 | planned |
 | 7 | SEO, meta tags, & structured data | Slice 3 | planned |
 | 8 | Admin Dashboard for lead management | Slice 4 | planned |
@@ -41,7 +41,7 @@ Resolve the React Compiler rule violation for calling setState synchronously wit
 ### 5. Fix Hydration mismatch
 Identify and resolve the hydration mismatch currently logged at runtime on the homepage.
 **Done when:** The homepage loads without hydration warnings in the browser console.
-- [ ] Build it: `/develop fix hydration mismatch`
+- [x] Build it: `/develop fix hydration mismatch`
 
 ## Slice 2: Enhanced Product Experience
 

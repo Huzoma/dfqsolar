@@ -143,7 +143,7 @@ export default function Home() {
                 <div className={styles.heroGrid}>
                   <div className={styles.heroTextCol}>
                     <span className={styles.heroEyebrow}>
-                      <Sun size={15} /> Solar &amp; lithium storage · Nigeria
+                      <Sun size={15} />{" Solar & lithium storage · Nigeria"}
                     </span>
                     <h1 className={styles.heroTitle}>
                       Energy independence,<br />
