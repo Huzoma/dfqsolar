@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import { z } from "zod";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PartnerSlider from "@/components/PartnerSlider";
@@ -330,7 +331,7 @@ export default function Home() {
                     <div className={styles.prodContent}>
                       <h4>Solar Panels</h4>
                       <p>High efficiency solar panels for maximum energy output.</p>
-                      <button onClick={() => handleTabChange("products")} className={styles.prodBtn}>Specs Details</button>
+                      <Link href="/product/solar-panels" className={styles.prodBtn}>Specs Details</Link>
                     </div>
                   </div>
 
@@ -341,7 +342,7 @@ export default function Home() {
                     <div className={styles.prodContent}>
                       <h4>Lithium Batteries</h4>
                       <p>Long lasting and reliable lithium batteries for energy storage.</p>
-                      <button onClick={() => handleTabChange("products")} className={styles.prodBtn}>Specs Details</button>
+                      <Link href="/product/lithium-batteries" className={styles.prodBtn}>Specs Details</Link>
                     </div>
                   </div>
 
@@ -352,7 +353,7 @@ export default function Home() {
                     <div className={styles.prodContent}>
                       <h4>Hybrid Inverters</h4>
                       <p>Smart inverters for seamless power conversion.</p>
-                      <button onClick={() => handleTabChange("products")} className={styles.prodBtn}>Specs Details</button>
+                      <Link href="/product/hybrid-inverters" className={styles.prodBtn}>Specs Details</Link>
                     </div>
                   </div>
 
@@ -363,7 +364,7 @@ export default function Home() {
                     <div className={styles.prodContent}>
                       <h4>MPPT Controllers</h4>
                       <p>Advanced MPPT controllers for maximum efficiency.</p>
-                      <button onClick={() => handleTabChange("products")} className={styles.prodBtn}>Specs Details</button>
+                      <Link href="/product/mppt-controllers" className={styles.prodBtn}>Specs Details</Link>
                     </div>
                   </div>
                 </div>
@@ -664,6 +665,7 @@ export default function Home() {
                       <li>Warranty: 25 Years Performance</li>
                       <li>Frame: Anodized Aluminum Alloy</li>
                     </ul>
+                    <Link href="/product/solar-panels" className={styles.productTabLink}>View Full Specs</Link>
                   </div>
 
                   {/* Batteries */}
@@ -684,6 +686,7 @@ export default function Home() {
                       <li>Warranty: 10 Years Strategic coverage</li>
                       <li>Smart BMS: Built-in safety and balancing</li>
                     </ul>
+                    <Link href="/product/lithium-batteries" className={styles.productTabLink}>View Full Specs</Link>
                   </div>
 
                   {/* Inverters */}
@@ -704,6 +707,7 @@ export default function Home() {
                       <li>Phase: Single and 3-Phase outputs</li>
                       <li>Control: Built-in MPPT chargers</li>
                     </ul>
+                    <Link href="/product/hybrid-inverters" className={styles.productTabLink}>View Full Specs</Link>
                   </div>
 
                   {/* Solar Lights */}
@@ -724,6 +728,7 @@ export default function Home() {
                       <li>Battery: High-grade LiFePO4 pack</li>
                       <li>Sensing: Auto night-switch + PIR motion</li>
                     </ul>
+                    <Link href="/product/solar-street-lights" className={styles.productTabLink}>View Full Specs</Link>
                   </div>
                 </div>
               </div>

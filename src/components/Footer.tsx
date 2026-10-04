@@ -5,10 +5,10 @@ import { MapPin, Phone, Mail, Globe, Facebook, Instagram, Youtube, ArrowRight } 
 import styles from "./Footer.module.css";
 
 interface FooterProps {
-  setActiveTab: (tab: string) => void;
+  setActiveTab?: (tab: string) => void;
 }
 
-export default function Footer({ setActiveTab }: FooterProps) {
+export default function Footer({ setActiveTab }: FooterProps = {}) {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
@@ -22,8 +22,12 @@ export default function Footer({ setActiveTab }: FooterProps) {
   };
 
   const handleLinkClick = (tabId: string) => {
-    setActiveTab(tabId);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (setActiveTab) {
+      setActiveTab(tabId);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.location.href = `/?tab=${tabId}`;
+    }
   };
 
   return (

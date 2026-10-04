@@ -5,11 +5,11 @@ import { Phone, Menu, X, ArrowRight, ArrowUpRight } from "lucide-react";
 import styles from "./Navbar.module.css";
 
 interface NavbarProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
+  activeTab?: string;
+  setActiveTab?: (tab: string) => void;
 }
 
-export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
+export default function Navbar({ activeTab = "home", setActiveTab }: NavbarProps = {}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
@@ -22,10 +22,14 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarProps) {
   ];
 
   const handleNavClick = (tabId: string) => {
-    setActiveTab(tabId);
-    setIsOpen(false);
-    // Scroll to top when changing tab
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (setActiveTab) {
+      setActiveTab(tabId);
+      setIsOpen(false);
+      // Scroll to top when changing tab
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      window.location.href = `/?tab=${tabId}`;
+    }
   };
 
   return (

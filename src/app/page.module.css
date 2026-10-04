@@ -1495,3 +1495,23 @@
   opacity: 1;
   transform: translate(0, 0);
 }
+.productTabLink {
+  margin-top: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background: rgba(11, 61, 145, 0.05);
+  color: var(--primary-blue);
+  font-family: var(--font-headings);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  text-decoration: none;
+}
+
+.productTabLink:hover {
+  background: var(--primary-blue);
+  color: var(--white);
+}

@@ -48,14 +48,14 @@ Identify and resolve the hydration mismatch currently logged at runtime on the h
 ### 6. Interactive Product Detail Views
 Make the product catalog cards clickable, linking to dedicated product detail views for deeper specifications and quoting.
 **Done when:** Users can click from a catalog card into a dedicated product page with full specs and a lead capture form.
-spec [0001](../specs/0001-interactive-product-detail-views.md)
+spec [0001](../specs/0001-interactive-product-detail-views.md) · code in `src/app/product/[id]/page.tsx`
 
 - [x] Design it (spec): `/architect interactive product detail views`
-- [ ] Build it: `/develop interactive product detail views`
-  - Define static `Product` data model and update catalog links (AC-1, AC-2)
-  - Create dynamic product detail route and invalid ID redirect (AC-2, AC-5, AC-6)
-  - Implement sticky lead capture form with WhatsApp integration (AC-3, AC-4)
-  - Assemble responsive two-column page layout (AC-2, AC-3)
+- [x] Build it: `/develop interactive product detail views`
+  - [x] Define static `Product` data model and update catalog links (AC-1, AC-2)
+  - [x] Create dynamic product detail route and invalid ID redirect (AC-2, AC-5, AC-6)
+  - [x] Implement sticky lead capture form with WhatsApp integration (AC-3, AC-4)
+  - [x] Assemble responsive two-column page layout (AC-2, AC-3)
 - [ ] Verify it: `/check verify interactive product detail views`
 - [ ] Test it: `/test interactive product detail views`
 - [ ] Review it (fresh model): `/check review interactive product detail views`

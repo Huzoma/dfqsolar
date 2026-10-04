@@ -1,0 +1,177 @@
+.appContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+  background: var(--light-bg);
+  padding-bottom: 80px;
+}
+
+.productSection {
+  padding-top: 140px; /* Account for fixed navbar */
+}
+
+@media (max-width: 768px) {
+  .productSection {
+    padding-top: 100px;
+  }
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-headings);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary-blue);
+  margin-bottom: 32px;
+  transition: color var(--transition-fast);
+  text-decoration: none;
+}
+
+.backLink:hover {
+  color: var(--solar-orange);
+}
+
+.productLayout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+@media (max-width: 991px) {
+  .productLayout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.productDetails {
+  background: var(--white);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(7, 28, 61, 0.03);
+}
+
+@media (max-width: 576px) {
+  .productDetails {
+    padding: 24px;
+  }
+}
+
+.productName {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--dark-navy);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+@media (max-width: 576px) {
+  .productName {
+    font-size: 28px;
+  }
+}
+
+.productDescription {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.productImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 40px;
+  background: var(--light-bg);
+}
+
+@media (max-width: 576px) {
+  .productImageWrapper {
+    height: 250px;
+  }
+}
+
+.specsContainer {
+  margin-top: 40px;
+  border-top: 1px solid rgba(7, 28, 61, 0.08);
+  padding-top: 40px;
+}
+
+.specsTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark-navy);
+  margin-bottom: 20px;
+}
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 576px) {
+  .specsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.specItem {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background: var(--light-bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(7, 28, 61, 0.03);
+}
+
+.specHeader {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.specKey {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.specValue {
+  font-size: 15px;
+  color: var(--dark-navy);
+  font-weight: 500;
+}
+
+.specBenefit {
+  font-size: 13.5px;
+  color: #3b82f6; /* using a subtle blue or theme color for the benefit text */
+  margin-top: 8px;
+  line-height: 1.5;
+  border-top: 1px dashed rgba(7, 28, 61, 0.1);
+  padding-top: 8px;
+  font-weight: 400;
+}
+
+.leadFormSidebar {
+  position: relative;
+}
+
+.stickyWrapper {
+  position: sticky;
+  top: 100px;
+}
