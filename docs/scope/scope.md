@@ -16,7 +16,7 @@ _These are recommendations to keep your build orderly, not requirements. Skip an
 | 3 | Core landing & WhatsApp integration | Foundation | existing |
 | 4 | Fix Calculator lint error | Slice 1 | in-progress |
 | 5 | Fix Hydration mismatch | Slice 1 | in-progress |
-| 6 | Interactive Product Detail Views | Slice 2 | planned |
+| 6 | Interactive Product Detail Views | Slice 2 | in-progress |
 | 7 | SEO, meta tags, & structured data | Slice 3 | planned |
 | 8 | Admin Dashboard for lead management | Slice 4 | planned |
 
@@ -45,10 +45,21 @@ Identify and resolve the hydration mismatch currently logged at runtime on the h
 
 ## Slice 2: Enhanced Product Experience
 
-### 6. Interactive Product Detail Views · needs a decision
+### 6. Interactive Product Detail Views
 Make the product catalog cards clickable, linking to dedicated product detail views for deeper specifications and quoting.
 **Done when:** Users can click from a catalog card into a dedicated product page with full specs and a lead capture form.
-- [ ] Design it (spec): `/architect interactive product detail views`
+spec [0001](../specs/0001-interactive-product-detail-views.md)
+
+- [x] Design it (spec): `/architect interactive product detail views`
+- [ ] Build it: `/develop interactive product detail views`
+  - Define static `Product` data model and update catalog links (AC-1, AC-2)
+  - Create dynamic product detail route and invalid ID redirect (AC-2, AC-5, AC-6)
+  - Implement sticky lead capture form with WhatsApp integration (AC-3, AC-4)
+  - Assemble responsive two-column page layout (AC-2, AC-3)
+- [ ] Verify it: `/check verify interactive product detail views`
+- [ ] Test it: `/test interactive product detail views`
+- [ ] Review it (fresh model): `/check review interactive product detail views`
+- [ ] Document it: `/document interactive product detail views`
 
 ## Slice 3: Growth & Discoverability
 
