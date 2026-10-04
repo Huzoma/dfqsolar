@@ -72,8 +72,9 @@ export default function LeadCaptureForm({ productName }: Props) {
       ) : (
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.formGroup}>
-            <label className={styles.label}>Full Name *</label>
+            <label htmlFor="fullName" className={styles.label}>Full Name *</label>
             <input
+              id="fullName"
               type="text"
               placeholder="Your Name"
               className={`${styles.input} ${errors.fullName ? styles.inputError : ""}`}
@@ -87,8 +88,9 @@ export default function LeadCaptureForm({ productName }: Props) {
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label}>WhatsApp Phone *</label>
+            <label htmlFor="phone" className={styles.label}>WhatsApp Phone *</label>
             <input
+              id="phone"
               type="text"
               placeholder="+234..."
               className={`${styles.input} ${errors.phone ? styles.inputError : ""}`}
@@ -102,8 +104,9 @@ export default function LeadCaptureForm({ productName }: Props) {
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label}>Message (Optional)</label>
+            <label htmlFor="message" className={styles.label}>Message (Optional)</label>
             <textarea
+              id="message"
               placeholder="Any specific requirements?"
               className={styles.textarea}
               value={formData.message}
