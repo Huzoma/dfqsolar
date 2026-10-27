@@ -860,8 +860,8 @@ export default function Home() {
                         <div>
                           <h5>Phone & WhatsApp Hotline</h5>
                           <p>
-                            <a href="https://wa.me/+2348140679281" style={{ color: "inherit", textDecoration: "none" }}>
-                              +234 814 067 9281
+                            <a href="https://wa.me/+2348038241231" style={{ color: "inherit", textDecoration: "none" }}>
+                              +234 803 824 1231
                             </a>
                           </p>
                         </div>

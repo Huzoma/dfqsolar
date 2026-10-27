@@ -72,7 +72,7 @@ export default function Navbar({ activeTab = "home", setActiveTab }: NavbarProps
 
         {/* Mobile Call & Menu Toggles */}
         <div className={styles.mobileToggles}>
-          <a href="https://wa.me/+2348140679281" className={styles.mobilePhoneBtn} aria-label="Call Customer Hotline">
+          <a href="https://wa.me/+2348038241231" className={styles.mobilePhoneBtn} aria-label="Call Customer Hotline">
             <Phone size={18} fill="currentColor" />
           </a>
           <button
